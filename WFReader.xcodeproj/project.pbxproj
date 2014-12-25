@@ -14,6 +14,20 @@
 		D22DE5291A4C14A500E75F4E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D22DE5281A4C14A500E75F4E /* Images.xcassets */; };
 		D22DE52C1A4C14A500E75F4E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22DE52A1A4C14A500E75F4E /* LaunchScreen.xib */; };
 		D22DE5381A4C14A500E75F4E /* WFReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5371A4C14A500E75F4E /* WFReaderTests.m */; };
+		D22DE55B1A4C14C300E75F4E /* E_CommonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5441A4C14C300E75F4E /* E_CommonManager.m */; };
+		D22DE55C1A4C14C300E75F4E /* E_EveryChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5461A4C14C300E75F4E /* E_EveryChapter.m */; };
+		D22DE55D1A4C14C300E75F4E /* E_Paging.mm in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5481A4C14C300E75F4E /* E_Paging.mm */; };
+		D22DE55E1A4C14C300E75F4E /* E_ReaderDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE54A1A4C14C300E75F4E /* E_ReaderDataSource.m */; };
+		D22DE55F1A4C14C300E75F4E /* Chapter1.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE54C1A4C14C300E75F4E /* Chapter1.txt */; };
+		D22DE5601A4C14C300E75F4E /* Chapter2.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE54D1A4C14C300E75F4E /* Chapter2.txt */; };
+		D22DE5611A4C14C300E75F4E /* Chapter3.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE54E1A4C14C300E75F4E /* Chapter3.txt */; };
+		D22DE5621A4C14C300E75F4E /* Chapter4.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE54F1A4C14C300E75F4E /* Chapter4.txt */; };
+		D22DE5631A4C14C300E75F4E /* Chapter5.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE5501A4C14C300E75F4E /* Chapter5.txt */; };
+		D22DE5641A4C14C300E75F4E /* Chapter6.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE5511A4C14C300E75F4E /* Chapter6.txt */; };
+		D22DE5651A4C14C300E75F4E /* Chapter7.txt in Resources */ = {isa = PBXBuildFile; fileRef = D22DE5521A4C14C300E75F4E /* Chapter7.txt */; };
+		D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5551A4C14C300E75F4E /* E_ReaderView.m */; };
+		D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */; };
+		D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D206F34C1A4C164300A50C29 /* E_ContantFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = E_ContantFile.h; sourceTree = "<group>"; };
 		D22DE5181A4C14A500E75F4E /* WFReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22DE51C1A4C14A500E75F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D22DE51D1A4C14A500E75F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -40,6 +55,27 @@
 		D22DE5311A4C14A500E75F4E /* WFReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WFReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22DE5361A4C14A500E75F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D22DE5371A4C14A500E75F4E /* WFReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WFReaderTests.m; sourceTree = "<group>"; };
+		D22DE5431A4C14C300E75F4E /* E_CommonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_CommonManager.h; sourceTree = "<group>"; };
+		D22DE5441A4C14C300E75F4E /* E_CommonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_CommonManager.m; sourceTree = "<group>"; };
+		D22DE5451A4C14C300E75F4E /* E_EveryChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_EveryChapter.h; sourceTree = "<group>"; };
+		D22DE5461A4C14C300E75F4E /* E_EveryChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_EveryChapter.m; sourceTree = "<group>"; };
+		D22DE5471A4C14C300E75F4E /* E_Paging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_Paging.h; sourceTree = "<group>"; };
+		D22DE5481A4C14C300E75F4E /* E_Paging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = E_Paging.mm; sourceTree = "<group>"; };
+		D22DE5491A4C14C300E75F4E /* E_ReaderDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ReaderDataSource.h; sourceTree = "<group>"; };
+		D22DE54A1A4C14C300E75F4E /* E_ReaderDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderDataSource.m; sourceTree = "<group>"; };
+		D22DE54C1A4C14C300E75F4E /* Chapter1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter1.txt; sourceTree = "<group>"; };
+		D22DE54D1A4C14C300E75F4E /* Chapter2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter2.txt; sourceTree = "<group>"; };
+		D22DE54E1A4C14C300E75F4E /* Chapter3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter3.txt; sourceTree = "<group>"; };
+		D22DE54F1A4C14C300E75F4E /* Chapter4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter4.txt; sourceTree = "<group>"; };
+		D22DE5501A4C14C300E75F4E /* Chapter5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter5.txt; sourceTree = "<group>"; };
+		D22DE5511A4C14C300E75F4E /* Chapter6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter6.txt; sourceTree = "<group>"; };
+		D22DE5521A4C14C300E75F4E /* Chapter7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter7.txt; sourceTree = "<group>"; };
+		D22DE5541A4C14C300E75F4E /* E_ReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ReaderView.h; sourceTree = "<group>"; };
+		D22DE5551A4C14C300E75F4E /* E_ReaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderView.m; sourceTree = "<group>"; };
+		D22DE5571A4C14C300E75F4E /* E_ReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ReaderViewController.h; sourceTree = "<group>"; };
+		D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderViewController.m; sourceTree = "<group>"; };
+		D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ScrollViewController.h; sourceTree = "<group>"; };
+		D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ScrollViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +121,7 @@
 				D22DE5201A4C14A500E75F4E /* AppDelegate.m */,
 				D22DE5221A4C14A500E75F4E /* ViewController.h */,
 				D22DE5231A4C14A500E75F4E /* ViewController.m */,
+				D22DE5411A4C14C300E75F4E /* EReader */,
 				D22DE5251A4C14A500E75F4E /* Main.storyboard */,
 				D22DE5281A4C14A500E75F4E /* Images.xcassets */,
 				D22DE52A1A4C14A500E75F4E /* LaunchScreen.xib */,
@@ -117,6 +154,67 @@
 				D22DE5361A4C14A500E75F4E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D22DE5411A4C14C300E75F4E /* EReader */ = {
+			isa = PBXGroup;
+			children = (
+				D22DE5421A4C14C300E75F4E /* Mode */,
+				D22DE54B1A4C14C300E75F4E /* resource */,
+				D22DE5531A4C14C300E75F4E /* View */,
+				D22DE5561A4C14C300E75F4E /* ViewController */,
+			);
+			path = EReader;
+			sourceTree = "<group>";
+		};
+		D22DE5421A4C14C300E75F4E /* Mode */ = {
+			isa = PBXGroup;
+			children = (
+				D22DE5431A4C14C300E75F4E /* E_CommonManager.h */,
+				D22DE5441A4C14C300E75F4E /* E_CommonManager.m */,
+				D22DE5451A4C14C300E75F4E /* E_EveryChapter.h */,
+				D22DE5461A4C14C300E75F4E /* E_EveryChapter.m */,
+				D22DE5471A4C14C300E75F4E /* E_Paging.h */,
+				D22DE5481A4C14C300E75F4E /* E_Paging.mm */,
+				D22DE5491A4C14C300E75F4E /* E_ReaderDataSource.h */,
+				D22DE54A1A4C14C300E75F4E /* E_ReaderDataSource.m */,
+				D206F34C1A4C164300A50C29 /* E_ContantFile.h */,
+			);
+			path = Mode;
+			sourceTree = "<group>";
+		};
+		D22DE54B1A4C14C300E75F4E /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				D22DE54C1A4C14C300E75F4E /* Chapter1.txt */,
+				D22DE54D1A4C14C300E75F4E /* Chapter2.txt */,
+				D22DE54E1A4C14C300E75F4E /* Chapter3.txt */,
+				D22DE54F1A4C14C300E75F4E /* Chapter4.txt */,
+				D22DE5501A4C14C300E75F4E /* Chapter5.txt */,
+				D22DE5511A4C14C300E75F4E /* Chapter6.txt */,
+				D22DE5521A4C14C300E75F4E /* Chapter7.txt */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		D22DE5531A4C14C300E75F4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D22DE5541A4C14C300E75F4E /* E_ReaderView.h */,
+				D22DE5551A4C14C300E75F4E /* E_ReaderView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D22DE5561A4C14C300E75F4E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D22DE5571A4C14C300E75F4E /* E_ReaderViewController.h */,
+				D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */,
+				D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */,
+				D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +299,13 @@
 			files = (
 				D22DE5271A4C14A500E75F4E /* Main.storyboard in Resources */,
 				D22DE52C1A4C14A500E75F4E /* LaunchScreen.xib in Resources */,
+				D22DE5651A4C14C300E75F4E /* Chapter7.txt in Resources */,
+				D22DE5641A4C14C300E75F4E /* Chapter6.txt in Resources */,
+				D22DE5611A4C14C300E75F4E /* Chapter3.txt in Resources */,
+				D22DE5601A4C14C300E75F4E /* Chapter2.txt in Resources */,
+				D22DE55F1A4C14C300E75F4E /* Chapter1.txt in Resources */,
+				D22DE5621A4C14C300E75F4E /* Chapter4.txt in Resources */,
+				D22DE5631A4C14C300E75F4E /* Chapter5.txt in Resources */,
 				D22DE5291A4C14A500E75F4E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D22DE55B1A4C14C300E75F4E /* E_CommonManager.m in Sources */,
+				D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */,
+				D22DE55D1A4C14C300E75F4E /* E_Paging.mm in Sources */,
 				D22DE5241A4C14A500E75F4E /* ViewController.m in Sources */,
+				D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */,
+				D22DE55C1A4C14C300E75F4E /* E_EveryChapter.m in Sources */,
+				D22DE55E1A4C14C300E75F4E /* E_ReaderDataSource.m in Sources */,
+				D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */,
 				D22DE5211A4C14A500E75F4E /* AppDelegate.m in Sources */,
 				D22DE51E1A4C14A500E75F4E /* main.m in Sources */,
 			);
@@ -412,6 +524,7 @@
 				D22DE53D1A4C14A500E75F4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D22DE53E1A4C14A500E75F4E /* Build configuration list for PBXNativeTarget "WFReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +533,7 @@
 				D22DE5401A4C14A500E75F4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
