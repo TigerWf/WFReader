@@ -15,6 +15,7 @@
  *  显示文本类
  */
 
+
 @interface E_ReaderView : UIView
 
 @property(unsafe_unretained, nonatomic)NSUInteger font;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) E_CursorView *leftCursor;
 @property (strong, nonatomic) E_CursorView *rightCursor;
 @property (strong, nonatomic) E_MagnifiterView *magnifierView;
+
 
 
 - (void)render;
