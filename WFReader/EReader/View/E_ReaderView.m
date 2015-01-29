@@ -315,7 +315,12 @@
         
         [self removeMaginfierView];
         [self showCursor];
-        [self showMenuUI];
+        if (selectedRange.length == 0) {
+            
+        }else{
+            [self showMenuUI];
+        }
+
         tapRecognizer.enabled = YES;
         
     }
