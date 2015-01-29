@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D20DC28F1A5FB6AB000EE995 /* r_drag-dot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D20DC28E1A5FB6AB000EE995 /* r_drag-dot@2x.png */; };
 		D22DE51E1A4C14A500E75F4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE51D1A4C14A500E75F4E /* main.m */; };
 		D22DE5211A4C14A500E75F4E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5201A4C14A500E75F4E /* AppDelegate.m */; };
 		D22DE5241A4C14A500E75F4E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5231A4C14A500E75F4E /* ViewController.m */; };
@@ -28,6 +29,8 @@
 		D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5551A4C14C300E75F4E /* E_ReaderView.m */; };
 		D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */; };
 		D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */; };
+		D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27768EE1A79F2F200607241 /* E_CursorView.m */; };
+		D27768F21A7A05D800607241 /* E_MagnifiterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27768F11A7A05D800607241 /* E_MagnifiterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		D206F34C1A4C164300A50C29 /* E_ContantFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = E_ContantFile.h; sourceTree = "<group>"; };
+		D20DC28E1A5FB6AB000EE995 /* r_drag-dot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "r_drag-dot@2x.png"; sourceTree = "<group>"; };
 		D22DE5181A4C14A500E75F4E /* WFReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WFReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22DE51C1A4C14A500E75F4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D22DE51D1A4C14A500E75F4E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -76,6 +80,10 @@
 		D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderViewController.m; sourceTree = "<group>"; };
 		D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ScrollViewController.h; sourceTree = "<group>"; };
 		D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ScrollViewController.m; sourceTree = "<group>"; };
+		D27768ED1A79F2F200607241 /* E_CursorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_CursorView.h; sourceTree = "<group>"; };
+		D27768EE1A79F2F200607241 /* E_CursorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_CursorView.m; sourceTree = "<group>"; };
+		D27768F01A7A05D800607241 /* E_MagnifiterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_MagnifiterView.h; sourceTree = "<group>"; };
+		D27768F11A7A05D800607241 /* E_MagnifiterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_MagnifiterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +194,7 @@
 		D22DE54B1A4C14C300E75F4E /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				D20DC28E1A5FB6AB000EE995 /* r_drag-dot@2x.png */,
 				D22DE54C1A4C14C300E75F4E /* Chapter1.txt */,
 				D22DE54D1A4C14C300E75F4E /* Chapter2.txt */,
 				D22DE54E1A4C14C300E75F4E /* Chapter3.txt */,
@@ -202,6 +211,10 @@
 			children = (
 				D22DE5541A4C14C300E75F4E /* E_ReaderView.h */,
 				D22DE5551A4C14C300E75F4E /* E_ReaderView.m */,
+				D27768ED1A79F2F200607241 /* E_CursorView.h */,
+				D27768EE1A79F2F200607241 /* E_CursorView.m */,
+				D27768F01A7A05D800607241 /* E_MagnifiterView.h */,
+				D27768F11A7A05D800607241 /* E_MagnifiterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -303,6 +316,7 @@
 				D22DE5641A4C14C300E75F4E /* Chapter6.txt in Resources */,
 				D22DE5611A4C14C300E75F4E /* Chapter3.txt in Resources */,
 				D22DE5601A4C14C300E75F4E /* Chapter2.txt in Resources */,
+				D20DC28F1A5FB6AB000EE995 /* r_drag-dot@2x.png in Resources */,
 				D22DE55F1A4C14C300E75F4E /* Chapter1.txt in Resources */,
 				D22DE5621A4C14C300E75F4E /* Chapter4.txt in Resources */,
 				D22DE5631A4C14C300E75F4E /* Chapter5.txt in Resources */,
@@ -324,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */,
 				D22DE55B1A4C14C300E75F4E /* E_CommonManager.m in Sources */,
 				D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */,
 				D22DE55D1A4C14C300E75F4E /* E_Paging.mm in Sources */,
@@ -333,6 +348,7 @@
 				D22DE55E1A4C14C300E75F4E /* E_ReaderDataSource.m in Sources */,
 				D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */,
 				D22DE5211A4C14A500E75F4E /* AppDelegate.m in Sources */,
+				D27768F21A7A05D800607241 /* E_MagnifiterView.m in Sources */,
 				D22DE51E1A4C14A500E75F4E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
