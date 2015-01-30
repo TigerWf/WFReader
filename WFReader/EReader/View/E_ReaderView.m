@@ -316,7 +316,7 @@
         [self removeMaginfierView];
         [self showCursor];
         if (selectedRange.length == 0) {
-            
+            panRecognizer.enabled = NO;
         }else{
             [self showMenuUI];
         }
@@ -325,7 +325,10 @@
         
     }
     
-    panRecognizer.enabled = YES;
+    if (selectedRange.length != 0) {
+        panRecognizer.enabled = YES;
+    }
+    
    
     
 }
@@ -381,6 +384,7 @@
                 _rightCursor.tag = 0;
                 [self removeMaginfierView];
                 if (selectedRange.length == 0) {
+                    panRecognizer.enabled = NO;
             
                 }else{
                     [self showMenuUI];
