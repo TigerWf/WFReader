@@ -380,7 +380,11 @@
                 _leftCursor.tag = 0;
                 _rightCursor.tag = 0;
                 [self removeMaginfierView];
-                [self showMenuUI];
+                if (selectedRange.length == 0) {
+            
+                }else{
+                    [self showMenuUI];
+                }
 
     }
     [self setNeedsDisplay];
@@ -603,7 +607,7 @@
                     if (index - subStringRange.location <= subStringRange.length&&index - subStringRange.location!=0) {
                         returnRange = subStringRange;
                        
-                        if (returnRange.length <= 2) {//为的是长按选择的文字永远大于或等于2个，方便拖动
+                        if (returnRange.length <= 2 && self.text.length > 1) {//为的是长按选择的文字永远大于或等于2个，方便拖动
                             returnRange.length = 2;
                         }
                         *stop = YES;
