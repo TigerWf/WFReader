@@ -303,6 +303,7 @@
   
     if (longPress.state == UIGestureRecognizerStateBegan ||
         longPress.state == UIGestureRecognizerStateChanged){
+        [_delegate shutOffGesture:YES];
         CFIndex index = [self getTouchIndexWithTouchPoint:point];
        
         if (index != -1 && index < self.text.length) {
@@ -481,6 +482,7 @@
 #pragma mark - 高亮
 - (void)highLight:(id)sender{
     
+     [_delegate shutOffGesture:NO];
     [highLightRangeArray addObject:NSStringFromRange(selectedRange)];
     selectedRange.location = 0;
     selectedRange.length = 0;
@@ -498,10 +500,21 @@
 #pragma mark - copy
 - (void)copyword:(id)sender{
     
+    [_delegate shutOffGesture:NO];
    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
    [pasteboard setString:[NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]]];
     [self hideMenuUI];
     NSLog(@"copyString == %@",[NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]]);
+    selectedRange.location = 0;
+    selectedRange.length = 0;
+    [self removeCursor];
+    [self hideMenuUI];
+    [self setNeedsDisplay];
+    
+    panRecognizer.enabled = NO;
+    tapRecognizer.enabled = NO;
+    longRecognizer.enabled = YES;
+    
     
 }
 
@@ -512,6 +525,7 @@
 #pragma mark -单击手势
 - (void)TapAction:(UITapGestureRecognizer *)doubleTap{
   
+    [_delegate shutOffGesture:NO];
     selectedRange.location = 0;
     selectedRange.length = 0;
     [self removeCursor];

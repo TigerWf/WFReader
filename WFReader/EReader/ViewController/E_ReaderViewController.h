@@ -15,6 +15,7 @@
 
 - (void)fontSizeChanged:(int)fontSize;//改变字号
 - (void)goBack;//退出
+- (void)shutOffPageViewControllerGesture:(BOOL)yesOrNo;
 
 @end
 

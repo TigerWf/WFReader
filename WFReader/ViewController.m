@@ -21,7 +21,7 @@
     [super viewDidLoad];
     UIButton *pushBtn = [UIButton buttonWithType:0];
     pushBtn.frame = CGRectMake(40, 50, self.view.frame.size.width - 80, 100);
-    [pushBtn setTitle:@"go Reader" forState:0];
+    [pushBtn setTitle:@"go to Reader" forState:0];
     pushBtn.backgroundColor = [UIColor cyanColor];
     [pushBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushBtn];

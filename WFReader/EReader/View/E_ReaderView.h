@@ -15,6 +15,11 @@
  *  显示文本类
  */
 
+@protocol E_ReaderViewDelegate <NSObject>
+
+- (void)shutOffGesture:(BOOL)yesOrNo;
+
+@end
 
 @interface E_ReaderView : UIView
 
@@ -24,8 +29,7 @@
 @property (strong, nonatomic) E_CursorView *leftCursor;
 @property (strong, nonatomic) E_CursorView *rightCursor;
 @property (strong, nonatomic) E_MagnifiterView *magnifierView;
-
-
+@property (assign, nonatomic) id<E_ReaderViewDelegate>delegate;
 
 - (void)render;
 

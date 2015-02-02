@@ -13,7 +13,7 @@
 #define MAX_FONT_SIZE 27
 #define MIN_FONT_SIZE 17
 
-@interface E_ReaderViewController ()
+@interface E_ReaderViewController ()<E_ReaderViewDelegate>
 {
     E_ReaderView *_readerView;
 }
@@ -38,6 +38,7 @@
    
     self.view.backgroundColor = [UIColor clearColor];
     _readerView = [[E_ReaderView alloc] initWithFrame:CGRectMake(offSet_x, offSet_y, self.view.frame.size.width - 2 * offSet_x, self.view.frame.size.height - offSet_y - 60)];
+    _readerView.delegate = self;
     [self.view addSubview:_readerView];
     
 #warning todo -- 暂时写在这 根据需求变  按钮变字号
@@ -69,6 +70,11 @@
 
 }
 
+#pragma mark - ReaderViewDelegate
+- (void)shutOffGesture:(BOOL)yesOrNo{
+    [_delegate shutOffPageViewControllerGesture:yesOrNo];
+}
+
 #pragma mark - 小
 - (void)changeSmall
 {
@@ -80,6 +86,7 @@
     [E_CommonManager saveFontSize:fontSize];
     [self updateFontButtons];
     [_delegate fontSizeChanged:(int)fontSize];
+    [_delegate shutOffPageViewControllerGesture:NO];
 }
 
 - (void)changeBig
@@ -92,6 +99,8 @@
     [E_CommonManager saveFontSize:fontSize];
     [self updateFontButtons];
     [_delegate fontSizeChanged:(int)fontSize];
+    [_delegate shutOffPageViewControllerGesture:NO];
+
 }
 
 

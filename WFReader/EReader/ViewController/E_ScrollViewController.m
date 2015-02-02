@@ -72,6 +72,18 @@
 }
 
 
+#pragma mark - readerVcDelegate
+- (void)shutOffPageViewControllerGesture:(BOOL)yesOrNo{
+    if (yesOrNo == NO) {
+        _pageViewController.delegate = self;
+        _pageViewController.dataSource = self;
+    }else{
+        _pageViewController.delegate = nil;
+        _pageViewController.dataSource = nil;
+    
+    }
+}
+
 - (void)parseChapter:(E_EveryChapter *)chapter
 {
     self.chapterContent_ = chapter.chapterContent;
@@ -172,7 +184,7 @@
     _isTurnOver = NO;
     _isRight = NO;
     
-    
+    NSLog(@"go before");
     E_ReaderViewController *reader = (E_ReaderViewController *)viewController;
     NSUInteger currentPage = reader.currentPage;
     
@@ -210,6 +222,8 @@
     _isTurnOver = NO;
     _isRight = YES;
     
+    
+     NSLog(@"go after");
     E_ReaderViewController *reader = (E_ReaderViewController *)viewController;
     NSUInteger currentPage = reader.currentPage;
     
