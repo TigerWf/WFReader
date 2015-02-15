@@ -20,7 +20,7 @@
    
     UISegmentedControl *_segmentControl;
     NSInteger dataCount;
-    CGFloat   _panStartX;
+    CGFloat  _panStartX;
 
 }
 @property (nonatomic,assign)id<E_ListViewDelegate>delegate;
