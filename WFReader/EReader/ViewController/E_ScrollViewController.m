@@ -12,20 +12,32 @@
 #import "E_EveryChapter.h"
 #import "E_Paging.h"
 #import "E_CommonManager.h"
+#import "E_SettingTopBar.h"
+#import "E_SettingBottomBar.h"
+#import "E_ContantFile.h"
+#import "E_DrawerView.h"
 
-@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate>
+@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate>
 {
     UIPageViewController * _pageViewController;
     E_Paging             * _paginater;
     BOOL _isTurnOver;     //是否跨章；
     BOOL _isRight;       //翻页方向  yes为右 no为左
     BOOL _pageIsAnimating;          //某些特别操作会导致只调用datasource的代理方法 delegate的不调用
-    
+    UITapGestureRecognizer *tapGesRec;
+    E_SettingTopBar *_settingToolBar;
+    E_SettingBottomBar *_settingBottomBar;
+    UIButton *_searchBtn;
+    UIButton *_markBtn;
+    UIButton *_shareBtn;
+    CGFloat   _panStartY;
 }
+
 @property (copy, nonatomic) NSString* chapterTitle_;
 @property (copy, nonatomic) NSString* chapterContent_;
 @property (unsafe_unretained, nonatomic) int fontSize;
 @property (unsafe_unretained, nonatomic) NSUInteger readOffset;
+@property (assign, nonatomic) NSInteger readPage;
 @end
 
 
@@ -56,21 +68,121 @@
     
     E_EveryChapter *chapter = [[E_ReaderDataSource shareInstance] openChapter];
     [self parseChapter:chapter];
-    [self initPageView];
+    [self initPageView:NO];
+    
+    tapGesRec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(callToolBar)];
+    [self.view addGestureRecognizer:tapGesRec];
+    
+    UIPanGestureRecognizer *panGesRec = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(LightRegulation:)];
+    panGesRec.maximumNumberOfTouches = 2;
+    panGesRec.minimumNumberOfTouches = 2;
+    [self.view addGestureRecognizer:panGesRec];
+  
 }
 
-- (void)initPageView
-{
-    _pageViewController = [[UIPageViewController alloc] init];
+
+- (void)LightRegulation:(UIPanGestureRecognizer *)recognizer{
+    CGPoint touchPoint = [recognizer locationInView:self.view];
+    switch (recognizer.state) {
+            
+        case UIGestureRecognizerStateBegan:
+        {
+            
+            _panStartY = touchPoint.y;
+        }
+            break;
+        case UIGestureRecognizerStateChanged:{
+        
+            CGFloat offSetY = touchPoint.y - _panStartY;
+            NSLog(@"offSetY == %f",offSetY);
+            CGFloat light = [UIScreen mainScreen].brightness;
+            if (offSetY >=0 ) {
+              
+                CGFloat percent = offSetY/self.view.frame.size.height;
+                CGFloat regulaLight = percent + light;
+                if (regulaLight >= 1.0) {
+                    regulaLight = 1.0;
+                }
+                [[UIScreen mainScreen] setBrightness:regulaLight];
+            }else{
+                CGFloat percent = offSetY/self.view.frame.size.height;
+                CGFloat regulaLight = light + percent;
+                if (regulaLight <= 0.0) {
+                    regulaLight = 0.0;
+                }
+                [[UIScreen mainScreen] setBrightness:regulaLight];
+            
+            
+            }
+        }
+            break;
+            
+        case UIGestureRecognizerStateEnded:{
+        
+        }
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)callToolBar{
     
+    if (_settingToolBar == nil) {
+        _settingToolBar= [[E_SettingTopBar alloc] initWithFrame:CGRectMake(0, -64, self.view.frame.size.width, 64)];
+        [self.view addSubview:_settingToolBar];
+        _settingToolBar.delegate = self;
+        [_settingToolBar showToolBar];
+        [self shutOffPageViewControllerGesture:YES];
+       
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    }else{
+        [self hideMultifunctionButton];
+        [_settingToolBar hideToolBar];
+        _settingToolBar = nil;
+        [self shutOffPageViewControllerGesture:NO];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        
+    }
+    
+    if (_settingBottomBar == nil) {
+        _settingBottomBar = [[E_SettingBottomBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kBottomBarH)];
+        [self.view addSubview:_settingBottomBar];
+        _settingBottomBar.delegate = self;
+        [_settingBottomBar showToolBar];
+        [self shutOffPageViewControllerGesture:YES];
+        
+    }else{
+        
+        [_settingBottomBar hideToolBar];
+        _settingBottomBar = nil;
+        [self shutOffPageViewControllerGesture:NO];
+    
+    }
+    
+}
+
+- (void)initPageView:(BOOL)isFromMenu;
+{
+    if (_pageViewController) {
+        NSLog(@"remove pageViewController");
+        [_pageViewController removeFromParentViewController];
+        _pageViewController = nil;
+    }
+    _pageViewController = [[UIPageViewController alloc] init];
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     
-    [self showPage:0];
+    if (isFromMenu == YES) {
+        [self showPage:0];
+    }else{
+        NSUInteger beforePage = [[E_ReaderDataSource shareInstance] openPage];
+        [self showPage:beforePage];
+    }
 }
-
 
 #pragma mark - readerVcDelegate
 - (void)shutOffPageViewControllerGesture:(BOOL)yesOrNo{
@@ -84,6 +196,59 @@
     }
 }
 
+#pragma mark - 点击侧边栏目录跳转
+- (void)turnToClickChapter:(NSInteger)chapterIndex{
+    E_EveryChapter *chapter = [[E_ReaderDataSource shareInstance] openChapter:chapterIndex + 1];//加1 是因为indexPath.row从0 开始的
+    [self parseChapter:chapter];
+    [self initPageView:YES];
+
+}
+
+#pragma mark - 上一章
+- (void)turnToPreChapter{
+    
+    if ([E_ReaderDataSource shareInstance].currentChapterIndex <= 1) {
+        return;
+    }
+    [self turnToClickChapter:[E_ReaderDataSource shareInstance].currentChapterIndex - 2];
+    
+}
+#pragma mark - 下一章
+- (void)turnToNextChapter{
+    
+    if ([E_ReaderDataSource shareInstance].currentChapterIndex == [E_ReaderDataSource shareInstance].totalChapter) {
+        return;
+    }
+    [self turnToClickChapter:[E_ReaderDataSource shareInstance].currentChapterIndex];
+
+}
+
+#pragma mark - 隐藏设置bar
+- (void)hideTheSettingBar{
+    
+    if (_settingToolBar == nil) {
+       
+    }else{
+        [self hideMultifunctionButton];
+        [_settingToolBar hideToolBar];
+        _settingToolBar = nil;
+        [self shutOffPageViewControllerGesture:NO];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+        
+    }
+    
+    if (_settingBottomBar == nil) {
+        
+     }else{
+        
+        [_settingBottomBar hideToolBar];
+        _settingBottomBar = nil;
+        [self shutOffPageViewControllerGesture:NO];
+    }
+}
+
+
+#pragma mark --
 - (void)parseChapter:(E_EveryChapter *)chapter
 {
     self.chapterContent_ = chapter.chapterContent;
@@ -122,12 +287,75 @@
     
 }
 
-- (void)goBack
-{
+#pragma mark - 直接隐藏多功能下拉按钮
+- (void)hideMultifunctionButton{
+    if (_searchBtn) {
+        [_shareBtn removeFromSuperview];_shareBtn = nil;[_markBtn removeFromSuperview];_markBtn = nil;[_searchBtn removeFromSuperview];_searchBtn = nil;
+       
+    }
+}
+
+#pragma mark - TopbarDelegate
+- (void)goBack{
+    
+    [E_CommonManager saveCurrentPage:_readPage];
+    [E_CommonManager saveCurrentChapter:[E_ReaderDataSource shareInstance].currentChapterIndex];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+#pragma mark - 动画显示或隐藏多功能下拉按钮
+- (void)showMultifunctionButton{
+    
+    if (_searchBtn) {
+        DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.15, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.15, [_searchBtn removeFromSuperview];_searchBtn = nil;);});});
+        return;
+    }
+    
+    _searchBtn = [UIButton buttonWithType:0];
+    _searchBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16, 60, 44);
+    _searchBtn.backgroundColor = [UIColor redColor];
+    [_searchBtn addTarget:self action:@selector(doSearch) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    _markBtn = [UIButton buttonWithType:0];
+    _markBtn.frame = CGRectMake(self.view.frame.size.width - 70 , 20 + 44 + 16 + 44 + 16, 60, 44);
+    _markBtn.backgroundColor = [UIColor redColor];
+    
+    
+    
+    _shareBtn = [UIButton buttonWithType:0];
+    _shareBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16 + 44 + 16 + 44 + 16, 60, 44);
+    _shareBtn.backgroundColor = [UIColor redColor];
+   
+    
+    DELAYEXECUTE(0.15,{[self.view addSubview:_searchBtn];DELAYEXECUTE(0.1, {[self.view addSubview:_markBtn];DELAYEXECUTE(0.1, [self.view addSubview:_shareBtn]);});});
+    
+}
+#pragma mark - 多功能按钮群中的搜索按钮触发事件
+- (void)doSearch{
+    NSLog(@"do search");
+}
 
+#pragma mark - 底部左侧按钮触发事件
+- (void)callDrawerView{
+    
+    [self callToolBar];
+    tapGesRec.enabled = NO;
+    
+    DELAYEXECUTE(0.18, {E_DrawerView *drawerView = [[E_DrawerView alloc] initWithFrame:self.view.frame parentView:self.view];drawerView.delegate = self;
+        [self.view addSubview:drawerView];});
+    
+
+}
+
+- (void)openTapGes{
+    
+    tapGesRec.enabled = YES;
+}
+
+// //////////////////////////////////////////////////////////////////
+
+#pragma mark - 根据偏移值找到新的页码
 - (NSUInteger)findOffsetInNewPage:(NSUInteger)offset
 {
     int pageCount = _paginater.pageCount;
@@ -155,6 +383,7 @@
 
 - (E_ReaderViewController *)readerControllerWithPage:(NSUInteger)page
 {
+    _readPage = page;
     E_ReaderViewController *textController = [[E_ReaderViewController alloc] init];
     textController.delegate = self;
     textController.view.backgroundColor = [UIColor whiteColor];

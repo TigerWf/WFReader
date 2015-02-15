@@ -10,8 +10,12 @@
 #define WFReader_E_ContantFile_h
 
 #define OPEN @"open"
-#define offSet_x 10
-#define offSet_y 30
+#define SAVEPAGE @"savePage"
+#define offSet_x 20
+#define offSet_y 40
 #define FONT_SIZE @"FONT_SIZE"
+#define kBottomBarH 100
+
+#define DELAYEXECUTE(delayTime,func) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{func;}))
 
 #endif

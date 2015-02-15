@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "E_ScrollViewController.h"
-
+#import "S_ScrollViewController.h"
 
 
 @interface ViewController ()
@@ -25,6 +25,13 @@
     pushBtn.backgroundColor = [UIColor cyanColor];
     [pushBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushBtn];
+    
+    pushBtn = [UIButton buttonWithType:0];
+    pushBtn.frame = CGRectMake(40, 50 + 200, self.view.frame.size.width - 80, 100);
+    [pushBtn setTitle:@"go to Reader" forState:0];
+    pushBtn.backgroundColor = [UIColor cyanColor];
+    [pushBtn addTarget:self action:@selector(pushOther) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pushBtn];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -33,6 +40,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)pushOther{
+    S_ScrollViewController *loginvctrl = [[S_ScrollViewController alloc] init];
+    [self presentViewController:loginvctrl animated:NO completion:nil];
+}
 
 - (void)push{
     E_ScrollViewController *loginvctrl = [[E_ScrollViewController alloc] init];

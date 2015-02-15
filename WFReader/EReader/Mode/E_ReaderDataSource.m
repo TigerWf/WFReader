@@ -26,6 +26,19 @@
 }
 
 
+- (E_EveryChapter *)openChapter:(NSInteger)clickChapter{
+
+    _currentChapterIndex = clickChapter;
+    
+    E_EveryChapter *chapter = [[E_EveryChapter alloc] init];
+    
+    NSString *chapter_num = [NSString stringWithFormat:@"Chapter%ld",_currentChapterIndex];
+    NSString *path1 = [[NSBundle mainBundle] pathForResource:chapter_num ofType:@"txt"];
+    chapter.chapterContent = [NSString stringWithContentsOfFile:path1 encoding:4 error:NULL];
+    
+    return chapter;
+}
+
 - (E_EveryChapter *)openChapter
 {
     NSUInteger index = [E_CommonManager Manager_getChapterBefore];
@@ -39,6 +52,13 @@
     chapter.chapterContent = [NSString stringWithContentsOfFile:path1 encoding:4 error:NULL];
     
     return chapter;
+}
+
+- (NSUInteger)openPage{
+    
+    NSUInteger index = [E_CommonManager Manager_getPageBefore];
+    return index;
+
 }
 
 

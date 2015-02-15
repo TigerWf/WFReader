@@ -10,6 +10,32 @@
 
 @implementation E_CommonManager
 
+
+
++ (NSUInteger)Manager_getPageBefore{
+    
+    NSString *pageID = [[NSUserDefaults standardUserDefaults] objectForKey:SAVEPAGE];
+    
+    if (pageID == nil) {
+        
+        return 0;
+        
+    }else{
+        
+        return [pageID integerValue];
+        
+    }
+
+}
+
++ (void)saveCurrentPage:(NSInteger)currentPage{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@(currentPage) forKey:SAVEPAGE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+
 + (NSUInteger)Manager_getChapterBefore
 {
     NSString *chapterID = [[NSUserDefaults standardUserDefaults] objectForKey:OPEN];
@@ -25,6 +51,16 @@
     }
 
 }
+
++ (void)saveCurrentChapter:(NSInteger)currentChapter{
+   
+    [[NSUserDefaults standardUserDefaults] setValue:@(currentChapter) forKey:OPEN];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
+
+
 + (NSUInteger)fontSize
 {
     NSUInteger fontSize = [[NSUserDefaults standardUserDefaults] integerForKey:FONT_SIZE];

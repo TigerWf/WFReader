@@ -304,6 +304,7 @@
     if (longPress.state == UIGestureRecognizerStateBegan ||
         longPress.state == UIGestureRecognizerStateChanged){
         [_delegate shutOffGesture:YES];
+        [_delegate hideSettingToolBar];
         CFIndex index = [self getTouchIndexWithTouchPoint:point];
        
         if (index != -1 && index < self.text.length) {

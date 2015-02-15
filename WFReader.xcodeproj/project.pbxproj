@@ -29,8 +29,21 @@
 		D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5551A4C14C300E75F4E /* E_ReaderView.m */; };
 		D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */; };
 		D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */; };
+		D2720FB71A8DD00800D18B23 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FB61A8DD00800D18B23 /* SwipeView.m */; };
+		D2720FBC1A8DD38300D18B23 /* S_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FBB1A8DD38300D18B23 /* S_ScrollViewController.m */; };
+		D2720FBF1A8DDC8300D18B23 /* E_SettingTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */; };
+		D2720FC21A8DE13400D18B23 /* E_SettingBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FC11A8DE13400D18B23 /* E_SettingBottomBar.m */; };
 		D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27768EE1A79F2F200607241 /* E_CursorView.m */; };
 		D27768F21A7A05D800607241 /* E_MagnifiterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27768F11A7A05D800607241 /* E_MagnifiterView.m */; };
+		D2949ED61A9031A500C8870C /* E_DrawerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2949ED51A9031A500C8870C /* E_DrawerView.m */; };
+		D2949EDB1A90351A00C8870C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D2949EDA1A90351A00C8870C /* UIImage+ImageEffects.m */; };
+		D2949EE11A90446800C8870C /* E_ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2949EE01A90446800C8870C /* E_ListView.m */; };
+		D2949EE41A909A0600C8870C /* ILSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = D2949EE31A909A0600C8870C /* ILSlider.m */; };
+		D2949EED1A90A2DB00C8870C /* reader_font_decrease@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EEB1A90A2DB00C8870C /* reader_font_decrease@2x.png */; };
+		D2949EEE1A90A2DB00C8870C /* reader_font_increase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EEC1A90A2DB00C8870C /* reader_font_increase@2x.png */; };
+		D2949EF01A90A3C400C8870C /* reader_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EEF1A90A3C400C8870C /* reader_cover@2x.png */; };
+		D2949EF21A90A40D00C8870C /* reader_comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EF11A90A40D00C8870C /* reader_comments@2x.png */; };
+		D2949EF41A90A47000C8870C /* reader_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EF31A90A47000C8870C /* reader_more@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,10 +93,31 @@
 		D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderViewController.m; sourceTree = "<group>"; };
 		D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ScrollViewController.h; sourceTree = "<group>"; };
 		D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ScrollViewController.m; sourceTree = "<group>"; };
+		D2720FB51A8DD00800D18B23 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		D2720FB61A8DD00800D18B23 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		D2720FBA1A8DD38300D18B23 /* S_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S_ScrollViewController.h; sourceTree = "<group>"; };
+		D2720FBB1A8DD38300D18B23 /* S_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S_ScrollViewController.m; sourceTree = "<group>"; };
+		D2720FBD1A8DDC8300D18B23 /* E_SettingTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SettingTopBar.h; sourceTree = "<group>"; };
+		D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SettingTopBar.m; sourceTree = "<group>"; };
+		D2720FC01A8DE13400D18B23 /* E_SettingBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SettingBottomBar.h; sourceTree = "<group>"; };
+		D2720FC11A8DE13400D18B23 /* E_SettingBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SettingBottomBar.m; sourceTree = "<group>"; };
 		D27768ED1A79F2F200607241 /* E_CursorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_CursorView.h; sourceTree = "<group>"; };
 		D27768EE1A79F2F200607241 /* E_CursorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_CursorView.m; sourceTree = "<group>"; };
 		D27768F01A7A05D800607241 /* E_MagnifiterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_MagnifiterView.h; sourceTree = "<group>"; };
 		D27768F11A7A05D800607241 /* E_MagnifiterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_MagnifiterView.m; sourceTree = "<group>"; };
+		D2949ED41A9031A500C8870C /* E_DrawerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_DrawerView.h; sourceTree = "<group>"; };
+		D2949ED51A9031A500C8870C /* E_DrawerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_DrawerView.m; sourceTree = "<group>"; };
+		D2949ED91A90351A00C8870C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		D2949EDA1A90351A00C8870C /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		D2949EDF1A90446800C8870C /* E_ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ListView.h; sourceTree = "<group>"; };
+		D2949EE01A90446800C8870C /* E_ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ListView.m; sourceTree = "<group>"; };
+		D2949EE21A909A0600C8870C /* ILSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ILSlider.h; sourceTree = "<group>"; };
+		D2949EE31A909A0600C8870C /* ILSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ILSlider.m; sourceTree = "<group>"; };
+		D2949EEB1A90A2DB00C8870C /* reader_font_decrease@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_font_decrease@2x.png"; sourceTree = "<group>"; };
+		D2949EEC1A90A2DB00C8870C /* reader_font_increase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_font_increase@2x.png"; sourceTree = "<group>"; };
+		D2949EEF1A90A3C400C8870C /* reader_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_cover@2x.png"; sourceTree = "<group>"; };
+		D2949EF11A90A40D00C8870C /* reader_comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_comments@2x.png"; sourceTree = "<group>"; };
+		D2949EF31A90A47000C8870C /* reader_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_more@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +163,7 @@
 				D22DE5201A4C14A500E75F4E /* AppDelegate.m */,
 				D22DE5221A4C14A500E75F4E /* ViewController.h */,
 				D22DE5231A4C14A500E75F4E /* ViewController.m */,
+				D2720FB41A8DD00800D18B23 /* ThirdPart */,
 				D22DE5411A4C14C300E75F4E /* EReader */,
 				D22DE5251A4C14A500E75F4E /* Main.storyboard */,
 				D22DE5281A4C14A500E75F4E /* Images.xcassets */,
@@ -167,6 +202,7 @@
 		D22DE5411A4C14C300E75F4E /* EReader */ = {
 			isa = PBXGroup;
 			children = (
+				D2720FB91A8DD2D700D18B23 /* SViewController */,
 				D22DE5421A4C14C300E75F4E /* Mode */,
 				D22DE54B1A4C14C300E75F4E /* resource */,
 				D22DE5531A4C14C300E75F4E /* View */,
@@ -195,6 +231,11 @@
 			isa = PBXGroup;
 			children = (
 				D20DC28E1A5FB6AB000EE995 /* r_drag-dot@2x.png */,
+				D2949EF31A90A47000C8870C /* reader_more@2x.png */,
+				D2949EEF1A90A3C400C8870C /* reader_cover@2x.png */,
+				D2949EF11A90A40D00C8870C /* reader_comments@2x.png */,
+				D2949EEB1A90A2DB00C8870C /* reader_font_decrease@2x.png */,
+				D2949EEC1A90A2DB00C8870C /* reader_font_increase@2x.png */,
 				D22DE54C1A4C14C300E75F4E /* Chapter1.txt */,
 				D22DE54D1A4C14C300E75F4E /* Chapter2.txt */,
 				D22DE54E1A4C14C300E75F4E /* Chapter3.txt */,
@@ -209,12 +250,22 @@
 		D22DE5531A4C14C300E75F4E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2949EE21A909A0600C8870C /* ILSlider.h */,
+				D2949EE31A909A0600C8870C /* ILSlider.m */,
+				D2949ED41A9031A500C8870C /* E_DrawerView.h */,
+				D2949ED51A9031A500C8870C /* E_DrawerView.m */,
 				D22DE5541A4C14C300E75F4E /* E_ReaderView.h */,
 				D22DE5551A4C14C300E75F4E /* E_ReaderView.m */,
 				D27768ED1A79F2F200607241 /* E_CursorView.h */,
 				D27768EE1A79F2F200607241 /* E_CursorView.m */,
 				D27768F01A7A05D800607241 /* E_MagnifiterView.h */,
 				D27768F11A7A05D800607241 /* E_MagnifiterView.m */,
+				D2720FBD1A8DDC8300D18B23 /* E_SettingTopBar.h */,
+				D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */,
+				D2720FC01A8DE13400D18B23 /* E_SettingBottomBar.h */,
+				D2720FC11A8DE13400D18B23 /* E_SettingBottomBar.m */,
+				D2949EDF1A90446800C8870C /* E_ListView.h */,
+				D2949EE01A90446800C8870C /* E_ListView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +279,27 @@
 				D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D2720FB41A8DD00800D18B23 /* ThirdPart */ = {
+			isa = PBXGroup;
+			children = (
+				D2720FB51A8DD00800D18B23 /* SwipeView.h */,
+				D2720FB61A8DD00800D18B23 /* SwipeView.m */,
+				D2949ED91A90351A00C8870C /* UIImage+ImageEffects.h */,
+				D2949EDA1A90351A00C8870C /* UIImage+ImageEffects.m */,
+			);
+			path = ThirdPart;
+			sourceTree = "<group>";
+		};
+		D2720FB91A8DD2D700D18B23 /* SViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D2720FBA1A8DD38300D18B23 /* S_ScrollViewController.h */,
+				D2720FBB1A8DD38300D18B23 /* S_ScrollViewController.m */,
+			);
+			name = SViewController;
+			path = Mode/SViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,10 +383,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D22DE5271A4C14A500E75F4E /* Main.storyboard in Resources */,
+				D2949EF01A90A3C400C8870C /* reader_cover@2x.png in Resources */,
 				D22DE52C1A4C14A500E75F4E /* LaunchScreen.xib in Resources */,
+				D2949EED1A90A2DB00C8870C /* reader_font_decrease@2x.png in Resources */,
+				D2949EF41A90A47000C8870C /* reader_more@2x.png in Resources */,
 				D22DE5651A4C14C300E75F4E /* Chapter7.txt in Resources */,
 				D22DE5641A4C14C300E75F4E /* Chapter6.txt in Resources */,
 				D22DE5611A4C14C300E75F4E /* Chapter3.txt in Resources */,
+				D2949EF21A90A40D00C8870C /* reader_comments@2x.png in Resources */,
+				D2949EEE1A90A2DB00C8870C /* reader_font_increase@2x.png in Resources */,
 				D22DE5601A4C14C300E75F4E /* Chapter2.txt in Resources */,
 				D20DC28F1A5FB6AB000EE995 /* r_drag-dot@2x.png in Resources */,
 				D22DE55F1A4C14C300E75F4E /* Chapter1.txt in Resources */,
@@ -338,15 +415,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2720FBC1A8DD38300D18B23 /* S_ScrollViewController.m in Sources */,
+				D2949EE41A909A0600C8870C /* ILSlider.m in Sources */,
 				D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */,
+				D2949EDB1A90351A00C8870C /* UIImage+ImageEffects.m in Sources */,
 				D22DE55B1A4C14C300E75F4E /* E_CommonManager.m in Sources */,
 				D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */,
 				D22DE55D1A4C14C300E75F4E /* E_Paging.mm in Sources */,
 				D22DE5241A4C14A500E75F4E /* ViewController.m in Sources */,
 				D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */,
+				D2720FB71A8DD00800D18B23 /* SwipeView.m in Sources */,
+				D2949ED61A9031A500C8870C /* E_DrawerView.m in Sources */,
 				D22DE55C1A4C14C300E75F4E /* E_EveryChapter.m in Sources */,
 				D22DE55E1A4C14C300E75F4E /* E_ReaderDataSource.m in Sources */,
 				D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */,
+				D2720FC21A8DE13400D18B23 /* E_SettingBottomBar.m in Sources */,
+				D2949EE11A90446800C8870C /* E_ListView.m in Sources */,
+				D2720FBF1A8DDC8300D18B23 /* E_SettingTopBar.m in Sources */,
 				D22DE5211A4C14A500E75F4E /* AppDelegate.m in Sources */,
 				D27768F21A7A05D800607241 /* E_MagnifiterView.m in Sources */,
 				D22DE51E1A4C14A500E75F4E /* main.m in Sources */,

@@ -34,7 +34,21 @@
  */
 - (E_EveryChapter *)openChapter;
 
+/**
+ *  章节跳转
+ *
+ *  @param clickChapter 跳转章节数
+ *
+ *  @return 该章节
+ */
+- (E_EveryChapter *)openChapter:(NSInteger)clickChapter;
 
+/**
+ *  打开得页数
+ *
+ *  @return 返回页数
+ */
+- (NSUInteger)openPage;
 
 /**
  *  获得下一章内容

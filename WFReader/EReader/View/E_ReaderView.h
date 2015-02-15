@@ -18,6 +18,7 @@
 @protocol E_ReaderViewDelegate <NSObject>
 
 - (void)shutOffGesture:(BOOL)yesOrNo;
+- (void)hideSettingToolBar;
 
 @end
 
