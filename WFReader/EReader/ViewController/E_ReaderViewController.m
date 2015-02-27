@@ -34,9 +34,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
-    self.view.backgroundColor = [UIColor clearColor];
+
     _readerView = [[E_ReaderView alloc] initWithFrame:CGRectMake(offSet_x, offSet_y, self.view.frame.size.width - 2 * offSet_x, self.view.frame.size.height - offSet_y - 20)];
+    _readerView.magnifiterImage = _themeBgImage;
     _readerView.delegate = self;
     [self.view addSubview:_readerView];
     

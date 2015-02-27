@@ -16,8 +16,10 @@
 #import "E_SettingBottomBar.h"
 #import "E_ContantFile.h"
 #import "E_DrawerView.h"
+#import "CDSideBarController.h"
+#import "E_CommentViewController.h"
 
-@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate>
+@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate>
 {
     UIPageViewController * _pageViewController;
     E_Paging             * _paginater;
@@ -31,6 +33,8 @@
     UIButton *_markBtn;
     UIButton *_shareBtn;
     CGFloat   _panStartY;
+    UIImage  *_themeImage;
+    CDSideBarController *sideBar;
 }
 
 @property (copy, nonatomic) NSString* chapterTitle_;
@@ -55,13 +59,34 @@
     return self;
 }
 
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+   [super viewDidAppear:animated];
+    
+   [sideBar insertMenuButtonOnView:[UIApplication sharedApplication].delegate.window atPosition:CGPointMake(self.view.frame.size.width - 70, 50)];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray *imageList = @[[UIImage imageNamed:@"sina.png"], [UIImage imageNamed:@"friend.png"], [UIImage imageNamed:@"weixin.png"], [UIImage imageNamed:@"menuClose.png"]];
+    sideBar = [[CDSideBarController alloc] initWithImages:imageList];
+    sideBar.delegate = self;
+    
     //设置总章节数
     [E_ReaderDataSource shareInstance].totalChapter = 7;
     self.fontSize = [E_CommonManager fontSize];
     _pageIsAnimating = NO;
+    
+    
+    NSInteger themeID = [E_CommonManager Manager_getReadTheme];
+    if (themeID == 1) {
+        _themeImage = nil;
+    }else{
+        _themeImage = [UIImage imageNamed:[NSString stringWithFormat:@"reader_bg%ld.png",(long)themeID]];
+    }
     
     // // // /// // /////////////////////////////////////
     
@@ -94,7 +119,7 @@
         case UIGestureRecognizerStateChanged:{
         
             CGFloat offSetY = touchPoint.y - _panStartY;
-            NSLog(@"offSetY == %f",offSetY);
+           // NSLog(@"offSetY == %f",offSetY);
             CGFloat light = [UIScreen mainScreen].brightness;
             if (offSetY >=0 ) {
               
@@ -149,6 +174,9 @@
     if (_settingBottomBar == nil) {
         _settingBottomBar = [[E_SettingBottomBar alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, kBottomBarH)];
         [self.view addSubview:_settingBottomBar];
+        _settingBottomBar.chapterTotalPage = _paginater.pageCount;
+        _settingBottomBar.chapterCurrentPage = _readPage;
+        _settingBottomBar.currentChapter = [E_ReaderDataSource shareInstance].currentChapterIndex;
         _settingBottomBar.delegate = self;
         [_settingBottomBar showToolBar];
         [self shutOffPageViewControllerGesture:YES];
@@ -166,7 +194,7 @@
 - (void)initPageView:(BOOL)isFromMenu;
 {
     if (_pageViewController) {
-        NSLog(@"remove pageViewController");
+      //  NSLog(@"remove pageViewController");
         [_pageViewController removeFromParentViewController];
         _pageViewController = nil;
     }
@@ -198,10 +226,16 @@
 
 #pragma mark - 点击侧边栏目录跳转
 - (void)turnToClickChapter:(NSInteger)chapterIndex{
+    
     E_EveryChapter *chapter = [[E_ReaderDataSource shareInstance] openChapter:chapterIndex + 1];//加1 是因为indexPath.row从0 开始的
     [self parseChapter:chapter];
     [self initPageView:YES];
 
+}
+
+- (void)sliderToChapterPage:(NSInteger)chapterIndex{
+    //NSLog(@"update");
+    [self showPage:chapterIndex - 1];
 }
 
 #pragma mark - 上一章
@@ -312,20 +346,30 @@
     }
     
     _searchBtn = [UIButton buttonWithType:0];
-    _searchBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16, 60, 44);
-    _searchBtn.backgroundColor = [UIColor redColor];
+    _searchBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16, 44, 44);
+    [_searchBtn setTitle:@"搜索" forState:0];
+    _searchBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    _searchBtn.backgroundColor = [UIColor colorWithRed:59/255.0 green:59/255.0 blue:59/255.0 alpha:1.0];
+    _searchBtn.layer.cornerRadius = 22;
     [_searchBtn addTarget:self action:@selector(doSearch) forControlEvents:UIControlEventTouchUpInside];
     
     
     _markBtn = [UIButton buttonWithType:0];
-    _markBtn.frame = CGRectMake(self.view.frame.size.width - 70 , 20 + 44 + 16 + 44 + 16, 60, 44);
-    _markBtn.backgroundColor = [UIColor redColor];
+    [_markBtn setTitle:@"书签" forState:0];
+    _markBtn.backgroundColor = [UIColor colorWithRed:59/255.0 green:59/255.0 blue:59/255.0 alpha:1.0];
+    _markBtn.frame = CGRectMake(self.view.frame.size.width - 70 , 20 + 44 + 16 + 44 + 16, 44, 44);
+    _markBtn.layer.cornerRadius = 22;
+    _markBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
     
     
     
     _shareBtn = [UIButton buttonWithType:0];
-    _shareBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16 + 44 + 16 + 44 + 16, 60, 44);
-    _shareBtn.backgroundColor = [UIColor redColor];
+    _shareBtn.backgroundColor = [UIColor colorWithRed:59/255.0 green:59/255.0 blue:59/255.0 alpha:1.0];
+    _shareBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16 + 44 + 16 + 44 + 16, 44, 44);
+    [_shareBtn setTitle:@"分享" forState:0];
+    _shareBtn.layer.cornerRadius = 22;
+    [_shareBtn addTarget:self action:@selector(doShare) forControlEvents:UIControlEventTouchUpInside];
+    _shareBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
    
     
     DELAYEXECUTE(0.15,{[self.view addSubview:_searchBtn];DELAYEXECUTE(0.1, {[self.view addSubview:_markBtn];DELAYEXECUTE(0.1, [self.view addSubview:_shareBtn]);});});
@@ -334,6 +378,39 @@
 #pragma mark - 多功能按钮群中的搜索按钮触发事件
 - (void)doSearch{
     NSLog(@"do search");
+}
+
+- (void)doShare{
+    
+    tapGesRec.enabled = NO;
+    for (int i ; i < _pageViewController.gestureRecognizers.count; i ++) {
+        UIGestureRecognizer *ges = (UIGestureRecognizer *)[_pageViewController.gestureRecognizers objectAtIndex:i];
+        ges.enabled = NO;
+    }
+    DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.15, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.15, [_searchBtn removeFromSuperview];_searchBtn = nil;[self hideTheSettingBar]; [sideBar showMenu];);});});
+   
+}
+
+#pragma mark - CDSideBarDelegate -- add by tiger-
+- (void)changeGestureRecognizers{
+    
+    tapGesRec.enabled = YES;
+    for (int i ; i < _pageViewController.gestureRecognizers.count; i ++) {
+        UIGestureRecognizer *ges = (UIGestureRecognizer *)[_pageViewController.gestureRecognizers objectAtIndex:i];
+        ges.enabled = YES;
+    }
+}
+
+- (void)menuButtonClicked:(int)index{
+    
+    if (index == 0) {
+        NSLog(@"分享至新浪");
+    }else if (index == 1){
+        NSLog(@"分享至朋友圈");
+    }else if(index == 2){
+        NSLog(@"分享至微信");
+    }
+
 }
 
 #pragma mark - 底部左侧按钮触发事件
@@ -348,12 +425,33 @@
 
 }
 
+
+#pragma mark - 底部右侧按钮触发事件
+- (void)callCommentView{
+ 
+    E_CommentViewController *e_commentVc = [[E_CommentViewController alloc] init];
+    [self presentViewController:e_commentVc animated:YES completion:NULL];
+    
+}
+
 - (void)openTapGes{
     
     tapGesRec.enabled = YES;
 }
 
 // //////////////////////////////////////////////////////////////////
+
+#pragma mark - 改变主题
+- (void)themeButtonAction:(id)myself themeIndex:(NSInteger)theme{
+  
+    if (theme == 1) {
+        _themeImage = nil;
+    }else{
+        _themeImage = [UIImage imageNamed:[NSString stringWithFormat:@"reader_bg%ld.png",(long)theme]];
+    }
+   
+    [self showPage:self.readPage];
+}
 
 #pragma mark - 根据偏移值找到新的页码
 - (NSUInteger)findOffsetInNewPage:(NSUInteger)offset
@@ -386,13 +484,34 @@
     _readPage = page;
     E_ReaderViewController *textController = [[E_ReaderViewController alloc] init];
     textController.delegate = self;
-    textController.view.backgroundColor = [UIColor whiteColor];
+    textController.themeBgImage = _themeImage;
+    if (_themeImage == nil) {
+        textController.view.backgroundColor = [UIColor whiteColor];
+    }else{
+        textController.view.backgroundColor = [UIColor colorWithPatternImage:_themeImage];
+    }
+    
     [textController view];
     textController.currentPage = page;
     textController.totalPage = _paginater.pageCount;
     textController.chapterTitle = self.chapterTitle_;
     textController.font = self.fontSize;
     textController.text = [_paginater stringOfPage:page];
+    
+    if (_settingBottomBar) {
+       
+        float currentPage = [[NSString stringWithFormat:@"%ld",_readPage] floatValue] + 1;
+        float totalPage = [[NSString stringWithFormat:@"%ld",textController.totalPage] floatValue];
+       
+        float percent;
+        if (currentPage == 1) {//强行放置头部
+            percent = 0;
+        }else{
+            percent = currentPage/totalPage;
+        }
+
+        [_settingBottomBar changeSliderRatioNum:percent];
+    }
     return textController;
 }
 
@@ -413,7 +532,7 @@
     _isTurnOver = NO;
     _isRight = NO;
     
-    NSLog(@"go before");
+   // NSLog(@"go before");
     E_ReaderViewController *reader = (E_ReaderViewController *)viewController;
     NSUInteger currentPage = reader.currentPage;
     
@@ -452,7 +571,7 @@
     _isRight = YES;
     
     
-     NSLog(@"go after");
+   //  NSLog(@"go after");
     E_ReaderViewController *reader = (E_ReaderViewController *)viewController;
     NSUInteger currentPage = reader.currentPage;
     

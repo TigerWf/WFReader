@@ -11,6 +11,29 @@
 @implementation E_CommonManager
 
 
++ (NSInteger)Manager_getReadTheme{
+   
+    NSString *themeID = [[NSUserDefaults standardUserDefaults] objectForKey:SAVETHEME];
+    
+    if (themeID == nil) {
+        
+        return 1;
+        
+    }else{
+        
+        return [themeID integerValue];
+        
+    }
+
+}
+
+
++ (void)saveCurrentThemeID:(NSInteger)currentThemeID{
+    
+    [[NSUserDefaults standardUserDefaults] setValue:@(currentThemeID) forKey:SAVETHEME];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
 
 + (NSUInteger)Manager_getPageBefore{
     

@@ -41,7 +41,7 @@
             //NSLog(@"offSetX == %f",offSetX);
             newFrame.origin.x += offSetX;
             if (newFrame.origin.x >= 0){//试图向上滑动 阻止
-                NSLog(@"xxxxxxx");
+               
                 newFrame.origin.x = 0;
                 self.frame = newFrame;
                 return;

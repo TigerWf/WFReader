@@ -11,10 +11,11 @@
 
 #define OPEN @"open"
 #define SAVEPAGE @"savePage"
+#define SAVETHEME @"saveTheme"
 #define offSet_x 20
 #define offSet_y 40
 #define FONT_SIZE @"FONT_SIZE"
-#define kBottomBarH 100
+#define kBottomBarH 150
 
 #define DELAYEXECUTE(delayTime,func) (dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{func;}))
 

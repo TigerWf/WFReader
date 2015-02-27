@@ -44,7 +44,7 @@
     if (self) {
         
         self.userInteractionEnabled = YES;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
        
         highLightRangeArray = [[NSMutableArray alloc] initWithCapacity:0];
         
@@ -243,7 +243,7 @@
     // 创建一个Path句柄
     CGMutablePathRef _path = CGPathCreateMutable();
     
-    [[UIColor colorWithRed:0.800f green:0.867f blue:0.929f alpha:1.0f]setFill];
+    [[UIColor colorWithRed:228/255.0 green:100/255.0 blue:166/255.0 alpha:0.6]setFill];
     
 
     for (int i = 0; i < [array count]; i++) {
@@ -647,8 +647,14 @@
     
     if (_magnifierView == nil) {
         _magnifierView = [[E_MagnifiterView alloc] init];
+        if (_magnifiterImage == nil) {
+            _magnifierView.backgroundColor = [UIColor whiteColor];
+        }else{
+            _magnifierView.backgroundColor = [UIColor colorWithPatternImage:_magnifiterImage];
+        }
         _magnifierView.viewToMagnify = self;
         [self addSubview:_magnifierView];
+//        NSLog(@"go here=------");
     }
     return _magnifierView;
 }

@@ -31,6 +31,7 @@
 @property (strong, nonatomic) E_CursorView *rightCursor;
 @property (strong, nonatomic) E_MagnifiterView *magnifierView;
 @property (assign, nonatomic) id<E_ReaderViewDelegate>delegate;
+@property (strong, nonatomic) UIImage  *magnifiterImage;
 
 - (void)render;
 

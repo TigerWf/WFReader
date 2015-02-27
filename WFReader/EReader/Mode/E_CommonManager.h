@@ -39,7 +39,20 @@
  */
 + (void)saveCurrentChapter:(NSInteger)currentChapter;
 
+/**
+ *  获得主题背景
+ *
+ *  @return 主题背景id
+ */
++ (NSInteger)Manager_getReadTheme;
 
+
+/**
+ *  保存主题ID
+ *
+ *  @param currentThemeID 主题ID
+ */
++ (void)saveCurrentThemeID:(NSInteger)currentThemeID;
 
 /**
  *  获得之前看的章节
