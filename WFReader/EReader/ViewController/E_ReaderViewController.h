@@ -29,6 +29,7 @@
 @property (nonatomic, copy)             NSString   *chapterTitle;
 @property (nonatomic, unsafe_unretained,readonly) CGSize readerTextSize;
 @property (nonatomic,strong)            UIImage    *themeBgImage;
+@property (nonatomic,strong)            NSString   *keyWord;
 
 - (CGSize)readerTextSize;
 

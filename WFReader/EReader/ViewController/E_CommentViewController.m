@@ -23,18 +23,7 @@
     titleLbl.font = [UIFont systemFontOfSize:20];
     titleLbl.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLbl];
-//
-//    titleLabel = [[E_ScrollLabel alloc] initWithFrame:CGRectMake(70, 20, self.view.frame.size.width - 140, 44)];
-//    
-//    titleLabel.text = @"关于对于某本书的评论，妈妈说此标题太长，所以必须动起来哎";
-//    titleLabel.textColor = [UIColor blackColor];
-//    titleLabel.font = [UIFont systemFontOfSize:18.0f];
-//    titleLabel.twoLabelSpace = 35.0f;
-//    titleLabel.pauseTime = 2.0f;
-//    titleLabel.speed = 40;
-//    [titleLabel beginRunning];
-//    [titleLabel addObserverForApp];
-//    [self.view addSubview:titleLabel];
+;
     
     UIButton *backBtn = [UIButton buttonWithType:0];
     backBtn.frame = CGRectMake(10, 20, 60, 44);

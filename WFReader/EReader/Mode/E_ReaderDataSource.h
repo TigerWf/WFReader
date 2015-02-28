@@ -19,6 +19,9 @@
 //总章节数
 @property (unsafe_unretained, nonatomic) NSUInteger totalChapter;
 
+@property (copy             , nonatomic) NSMutableString  *totalString;//全文
+
+@property (strong           , nonatomic) NSMutableArray   *everyChapterRange;//每章节的range
 /**
  *  单例
  *
@@ -73,5 +76,21 @@
  *  @return 搜索的关键字所在的位置
  */
 - (NSMutableArray *)searchWithKeyWords:(NSString *)keyWord;
+
+
+/**
+ *  获得全文
+ */
+- (void)resetTotalString;
+
+
+/**
+ *  获得指定章节的第一个字在整篇文章中的位置
+ *
+ *  @param page 指定章节
+ *
+ *  @return 位置
+ */
+- (NSInteger)getChapterBeginIndex:(NSInteger)page;
 
 @end

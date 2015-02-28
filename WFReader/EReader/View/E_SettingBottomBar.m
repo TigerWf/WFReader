@@ -133,12 +133,12 @@
     
     NSInteger themeID = [E_CommonManager Manager_getReadTheme];
     
-    for (int i = 1; i <= 5; i ++) {
+    for (int i = 1; i <= 4; i ++) {
         
         UIButton * themeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         themeButton.layer.cornerRadius = 2.0f;
         themeButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
-        themeButton.frame = CGRectMake(0 + 36*i + (self.frame.size.width - 60 - 7 *36)*(i - 1)/4, 2, 36, 36);
+        themeButton.frame = CGRectMake(0 + 36*i + (self.frame.size.width - 60 - 6 *36)*(i - 1)/3, 2, 36, 36);
         
         if (i == 1) {
             [themeButton setBackgroundColor:[UIColor whiteColor]];

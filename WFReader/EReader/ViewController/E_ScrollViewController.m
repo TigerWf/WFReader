@@ -18,8 +18,10 @@
 #import "E_DrawerView.h"
 #import "CDSideBarController.h"
 #import "E_CommentViewController.h"
+#import "E_SearchViewController.h"
 
-@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate>
+
+@interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate,E_SearchViewControllerDelegate>
 {
     UIPageViewController * _pageViewController;
     E_Paging             * _paginater;
@@ -35,6 +37,8 @@
     CGFloat   _panStartY;
     UIImage  *_themeImage;
     CDSideBarController *sideBar;
+    
+    NSString      *_searchWord;//用来接受搜索页面的keyword
 }
 
 @property (copy, nonatomic) NSString* chapterTitle_;
@@ -65,6 +69,7 @@
    [super viewDidAppear:animated];
     
    [sideBar insertMenuButtonOnView:[UIApplication sharedApplication].delegate.window atPosition:CGPointMake(self.view.frame.size.width - 70, 50)];
+    sideBar.singleTap.enabled = YES;
 }
 
 - (void)viewDidLoad
@@ -75,7 +80,7 @@
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
     
-    
+
     //设置总章节数
     [E_ReaderDataSource shareInstance].totalChapter = 7;
     self.fontSize = [E_CommonManager fontSize];
@@ -195,13 +200,15 @@
 - (void)initPageView:(BOOL)isFromMenu;
 {
     if (_pageViewController) {
-      //  NSLog(@"remove pageViewController");
+       //  NSLog(@"remove pageViewController");
         [_pageViewController removeFromParentViewController];
         _pageViewController = nil;
     }
     _pageViewController = [[UIPageViewController alloc] init];
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
+    
+   
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
     
@@ -378,7 +385,13 @@
 }
 #pragma mark - 多功能按钮群中的搜索按钮触发事件
 - (void)doSearch{
-    NSLog(@"do search");
+    
+    [self hideMultifunctionButton];
+    [self hideTheSettingBar];
+    sideBar.singleTap.enabled = NO;
+    E_SearchViewController *searchVc = [[E_SearchViewController alloc] init];
+    searchVc.delegate = self;
+    [self presentViewController:searchVc animated:YES completion:NULL];
 }
 
 - (void)doShare{
@@ -392,6 +405,34 @@
     }
     DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.15, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.15, [_searchBtn removeFromSuperview];_searchBtn = nil;[self hideTheSettingBar]; [sideBar showMenu];);});});
    
+}
+
+#pragma mark - searchViewControllerDelegate -
+- (void)turnToClickSearchResult:(NSString *)chapter withRange:(NSRange)searchRange andKeyWord:(NSString *)keyWord{
+
+    _searchWord = keyWord;
+    
+    E_EveryChapter *e_chapter = [[E_ReaderDataSource shareInstance] openChapter:[chapter integerValue]];//加1 是因为indexPath.row从0 开始的
+    [self parseChapter:e_chapter];
+    
+    if (_pageViewController) {
+        
+        // NSLog(@"remove pageViewController");
+        [_pageViewController removeFromParentViewController];
+        _pageViewController = nil;
+    }
+    _pageViewController = [[UIPageViewController alloc] init];
+    _pageViewController.delegate = self;
+    _pageViewController.dataSource = self;
+    
+    
+    [self addChildViewController:_pageViewController];
+    [self.view addSubview:_pageViewController.view];
+    
+    int showPage = [self findOffsetInNewPage:searchRange.location - [[E_ReaderDataSource shareInstance] getChapterBeginIndex:[chapter integerValue]]];
+    [self showPage:showPage];
+    
+
 }
 
 #pragma mark - CDSideBarDelegate -- add by tiger-
@@ -487,6 +528,7 @@
     _readPage = page;
     E_ReaderViewController *textController = [[E_ReaderViewController alloc] init];
     textController.delegate = self;
+    textController.keyWord = _searchWord;
     textController.themeBgImage = _themeImage;
     if (_themeImage == nil) {
         textController.view.backgroundColor = [UIColor whiteColor];
@@ -515,6 +557,8 @@
 
         [_settingBottomBar changeSliderRatioNum:percent];
     }
+    
+    _searchWord = nil;
     return textController;
 }
 

@@ -29,8 +29,6 @@
 		D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5551A4C14C300E75F4E /* E_ReaderView.m */; };
 		D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */; };
 		D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */; };
-		D2720FB71A8DD00800D18B23 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FB61A8DD00800D18B23 /* SwipeView.m */; };
-		D2720FBC1A8DD38300D18B23 /* S_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FBB1A8DD38300D18B23 /* S_ScrollViewController.m */; };
 		D2720FBF1A8DDC8300D18B23 /* E_SettingTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */; };
 		D2720FC21A8DE13400D18B23 /* E_SettingBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FC11A8DE13400D18B23 /* E_SettingBottomBar.m */; };
 		D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27768EE1A79F2F200607241 /* E_CursorView.m */; };
@@ -44,6 +42,17 @@
 		D2949EF01A90A3C400C8870C /* reader_cover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EEF1A90A3C400C8870C /* reader_cover@2x.png */; };
 		D2949EF21A90A40D00C8870C /* reader_comments@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EF11A90A40D00C8870C /* reader_comments@2x.png */; };
 		D2949EF41A90A47000C8870C /* reader_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2949EF31A90A47000C8870C /* reader_more@2x.png */; };
+		D2BA5EDC1AA16D44008FA43F /* E_SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EDB1AA16D44008FA43F /* E_SearchViewController.m */; };
+		D2BA5EDE1AA1716F008FA43F /* magnifiter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BA5EDD1AA1716F008FA43F /* magnifiter@2x.png */; };
+		D2BA5EE11AA19AFB008FA43F /* E_SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EE01AA19AFB008FA43F /* E_SearchTableViewCell.m */; };
+		D2BA5EF31AA1A6B7008FA43F /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D2BA5EE31AA1A6B7008FA43F /* MJRefresh.bundle */; };
+		D2BA5EF41AA1A6B7008FA43F /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EE61AA1A6B7008FA43F /* MJRefreshBaseView.m */; };
+		D2BA5EF51AA1A6B7008FA43F /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EE81AA1A6B7008FA43F /* MJRefreshConst.m */; };
+		D2BA5EF61AA1A6B7008FA43F /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EEA1AA1A6B7008FA43F /* MJRefreshFooterView.m */; };
+		D2BA5EF71AA1A6B7008FA43F /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EEC1AA1A6B7008FA43F /* MJRefreshHeaderView.m */; };
+		D2BA5EF81AA1A6B7008FA43F /* UIScrollView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EEE1AA1A6B7008FA43F /* UIScrollView+Extension.m */; };
+		D2BA5EF91AA1A6B7008FA43F /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EF01AA1A6B7008FA43F /* UIScrollView+MJRefresh.m */; };
+		D2BA5EFA1AA1A6B7008FA43F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BA5EF21AA1A6B7008FA43F /* UIView+Extension.m */; };
 		D2BBD7CA1AA04DD900029980 /* reader_bg_s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BBD7C41AA04DD900029980 /* reader_bg_s@2x.png */; };
 		D2BBD7CB1AA04DD900029980 /* reader_bg1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BBD7C51AA04DD900029980 /* reader_bg1@2x.png */; };
 		D2BBD7CC1AA04DD900029980 /* reader_bg2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BBD7C61AA04DD900029980 /* reader_bg2@2x.png */; };
@@ -106,10 +115,6 @@
 		D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderViewController.m; sourceTree = "<group>"; };
 		D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ScrollViewController.h; sourceTree = "<group>"; };
 		D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ScrollViewController.m; sourceTree = "<group>"; };
-		D2720FB51A8DD00800D18B23 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
-		D2720FB61A8DD00800D18B23 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
-		D2720FBA1A8DD38300D18B23 /* S_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S_ScrollViewController.h; sourceTree = "<group>"; };
-		D2720FBB1A8DD38300D18B23 /* S_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S_ScrollViewController.m; sourceTree = "<group>"; };
 		D2720FBD1A8DDC8300D18B23 /* E_SettingTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SettingTopBar.h; sourceTree = "<group>"; };
 		D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SettingTopBar.m; sourceTree = "<group>"; };
 		D2720FC01A8DE13400D18B23 /* E_SettingBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SettingBottomBar.h; sourceTree = "<group>"; };
@@ -131,6 +136,27 @@
 		D2949EEF1A90A3C400C8870C /* reader_cover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_cover@2x.png"; sourceTree = "<group>"; };
 		D2949EF11A90A40D00C8870C /* reader_comments@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_comments@2x.png"; sourceTree = "<group>"; };
 		D2949EF31A90A47000C8870C /* reader_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_more@2x.png"; sourceTree = "<group>"; };
+		D2BA5EDA1AA16D44008FA43F /* E_SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SearchViewController.h; sourceTree = "<group>"; };
+		D2BA5EDB1AA16D44008FA43F /* E_SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SearchViewController.m; sourceTree = "<group>"; };
+		D2BA5EDD1AA1716F008FA43F /* magnifiter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnifiter@2x.png"; sourceTree = "<group>"; };
+		D2BA5EDF1AA19AFB008FA43F /* E_SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SearchTableViewCell.h; sourceTree = "<group>"; };
+		D2BA5EE01AA19AFB008FA43F /* E_SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SearchTableViewCell.m; sourceTree = "<group>"; };
+		D2BA5EE31AA1A6B7008FA43F /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		D2BA5EE41AA1A6B7008FA43F /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		D2BA5EE51AA1A6B7008FA43F /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		D2BA5EE61AA1A6B7008FA43F /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		D2BA5EE71AA1A6B7008FA43F /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		D2BA5EE81AA1A6B7008FA43F /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		D2BA5EE91AA1A6B7008FA43F /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		D2BA5EEA1AA1A6B7008FA43F /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		D2BA5EEB1AA1A6B7008FA43F /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		D2BA5EEC1AA1A6B7008FA43F /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		D2BA5EED1AA1A6B7008FA43F /* UIScrollView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Extension.h"; sourceTree = "<group>"; };
+		D2BA5EEE1AA1A6B7008FA43F /* UIScrollView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Extension.m"; sourceTree = "<group>"; };
+		D2BA5EEF1AA1A6B7008FA43F /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		D2BA5EF01AA1A6B7008FA43F /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		D2BA5EF11AA1A6B7008FA43F /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		D2BA5EF21AA1A6B7008FA43F /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		D2BBD7C41AA04DD900029980 /* reader_bg_s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_bg_s@2x.png"; sourceTree = "<group>"; };
 		D2BBD7C51AA04DD900029980 /* reader_bg1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_bg1@2x.png"; sourceTree = "<group>"; };
 		D2BBD7C61AA04DD900029980 /* reader_bg2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_bg2@2x.png"; sourceTree = "<group>"; };
@@ -230,7 +256,6 @@
 		D22DE5411A4C14C300E75F4E /* EReader */ = {
 			isa = PBXGroup;
 			children = (
-				D2720FB91A8DD2D700D18B23 /* SViewController */,
 				D22DE5421A4C14C300E75F4E /* Mode */,
 				D22DE54B1A4C14C300E75F4E /* resource */,
 				D22DE5531A4C14C300E75F4E /* View */,
@@ -258,6 +283,7 @@
 		D22DE54B1A4C14C300E75F4E /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				D2BA5EDD1AA1716F008FA43F /* magnifiter@2x.png */,
 				D2C4FF0B1AA06E1100DD14CE /* friend@2x.png */,
 				D2C4FF0C1AA06E1100DD14CE /* sina@2x.png */,
 				D2C4FF0D1AA06E1100DD14CE /* weixin@2x.png */,
@@ -305,6 +331,8 @@
 				D2720FC11A8DE13400D18B23 /* E_SettingBottomBar.m */,
 				D2949EDF1A90446800C8870C /* E_ListView.h */,
 				D2949EE01A90446800C8870C /* E_ListView.m */,
+				D2BA5EDF1AA19AFB008FA43F /* E_SearchTableViewCell.h */,
+				D2BA5EE01AA19AFB008FA43F /* E_SearchTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,6 +344,8 @@
 				D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */,
 				D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */,
 				D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */,
+				D2BA5EDA1AA16D44008FA43F /* E_SearchViewController.h */,
+				D2BA5EDB1AA16D44008FA43F /* E_SearchViewController.m */,
 				D2C4FF111AA06F8400DD14CE /* E_CommentViewController.h */,
 				D2C4FF121AA06F8400DD14CE /* E_CommentViewController.m */,
 			);
@@ -325,24 +355,36 @@
 		D2720FB41A8DD00800D18B23 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				D2BA5EE21AA1A6B7008FA43F /* MJRefresh */,
 				D2C4FF081AA067DA00DD14CE /* CDSideBarController.h */,
 				D2C4FF091AA067DA00DD14CE /* CDSideBarController.m */,
-				D2720FB51A8DD00800D18B23 /* SwipeView.h */,
-				D2720FB61A8DD00800D18B23 /* SwipeView.m */,
 				D2949ED91A90351A00C8870C /* UIImage+ImageEffects.h */,
 				D2949EDA1A90351A00C8870C /* UIImage+ImageEffects.m */,
 			);
 			path = ThirdPart;
 			sourceTree = "<group>";
 		};
-		D2720FB91A8DD2D700D18B23 /* SViewController */ = {
+		D2BA5EE21AA1A6B7008FA43F /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				D2720FBA1A8DD38300D18B23 /* S_ScrollViewController.h */,
-				D2720FBB1A8DD38300D18B23 /* S_ScrollViewController.m */,
+				D2BA5EE31AA1A6B7008FA43F /* MJRefresh.bundle */,
+				D2BA5EE41AA1A6B7008FA43F /* MJRefresh.h */,
+				D2BA5EE51AA1A6B7008FA43F /* MJRefreshBaseView.h */,
+				D2BA5EE61AA1A6B7008FA43F /* MJRefreshBaseView.m */,
+				D2BA5EE71AA1A6B7008FA43F /* MJRefreshConst.h */,
+				D2BA5EE81AA1A6B7008FA43F /* MJRefreshConst.m */,
+				D2BA5EE91AA1A6B7008FA43F /* MJRefreshFooterView.h */,
+				D2BA5EEA1AA1A6B7008FA43F /* MJRefreshFooterView.m */,
+				D2BA5EEB1AA1A6B7008FA43F /* MJRefreshHeaderView.h */,
+				D2BA5EEC1AA1A6B7008FA43F /* MJRefreshHeaderView.m */,
+				D2BA5EED1AA1A6B7008FA43F /* UIScrollView+Extension.h */,
+				D2BA5EEE1AA1A6B7008FA43F /* UIScrollView+Extension.m */,
+				D2BA5EEF1AA1A6B7008FA43F /* UIScrollView+MJRefresh.h */,
+				D2BA5EF01AA1A6B7008FA43F /* UIScrollView+MJRefresh.m */,
+				D2BA5EF11AA1A6B7008FA43F /* UIView+Extension.h */,
+				D2BA5EF21AA1A6B7008FA43F /* UIView+Extension.m */,
 			);
-			name = SViewController;
-			path = Mode/SViewController;
+			path = MJRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,7 +490,9 @@
 				D20DC28F1A5FB6AB000EE995 /* r_drag-dot@2x.png in Resources */,
 				D22DE55F1A4C14C300E75F4E /* Chapter1.txt in Resources */,
 				D22DE5621A4C14C300E75F4E /* Chapter4.txt in Resources */,
+				D2BA5EF31AA1A6B7008FA43F /* MJRefresh.bundle in Resources */,
 				D22DE5631A4C14C300E75F4E /* Chapter5.txt in Resources */,
+				D2BA5EDE1AA1716F008FA43F /* magnifiter@2x.png in Resources */,
 				D22DE5291A4C14A500E75F4E /* Images.xcassets in Resources */,
 				D2BBD7CA1AA04DD900029980 /* reader_bg_s@2x.png in Resources */,
 				D2C4FF0F1AA06E1100DD14CE /* sina@2x.png in Resources */,
@@ -469,20 +513,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BA5EF51AA1A6B7008FA43F /* MJRefreshConst.m in Sources */,
 				D2C4FF0A1AA067DA00DD14CE /* CDSideBarController.m in Sources */,
-				D2720FBC1A8DD38300D18B23 /* S_ScrollViewController.m in Sources */,
+				D2BA5EF71AA1A6B7008FA43F /* MJRefreshHeaderView.m in Sources */,
 				D2949EE41A909A0600C8870C /* ILSlider.m in Sources */,
+				D2BA5EDC1AA16D44008FA43F /* E_SearchViewController.m in Sources */,
 				D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */,
 				D2949EDB1A90351A00C8870C /* UIImage+ImageEffects.m in Sources */,
+				D2BA5EF91AA1A6B7008FA43F /* UIScrollView+MJRefresh.m in Sources */,
 				D22DE55B1A4C14C300E75F4E /* E_CommonManager.m in Sources */,
 				D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */,
 				D22DE55D1A4C14C300E75F4E /* E_Paging.mm in Sources */,
 				D22DE5241A4C14A500E75F4E /* ViewController.m in Sources */,
 				D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */,
-				D2720FB71A8DD00800D18B23 /* SwipeView.m in Sources */,
+				D2BA5EF81AA1A6B7008FA43F /* UIScrollView+Extension.m in Sources */,
+				D2BA5EF61AA1A6B7008FA43F /* MJRefreshFooterView.m in Sources */,
 				D2949ED61A9031A500C8870C /* E_DrawerView.m in Sources */,
 				D22DE55C1A4C14C300E75F4E /* E_EveryChapter.m in Sources */,
+				D2BA5EFA1AA1A6B7008FA43F /* UIView+Extension.m in Sources */,
 				D22DE55E1A4C14C300E75F4E /* E_ReaderDataSource.m in Sources */,
+				D2BA5EE11AA19AFB008FA43F /* E_SearchTableViewCell.m in Sources */,
 				D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */,
 				D2720FC21A8DE13400D18B23 /* E_SettingBottomBar.m in Sources */,
 				D2949EE11A90446800C8870C /* E_ListView.m in Sources */,
@@ -490,6 +540,7 @@
 				D2C4FF131AA06F8400DD14CE /* E_CommentViewController.m in Sources */,
 				D22DE5211A4C14A500E75F4E /* AppDelegate.m in Sources */,
 				D27768F21A7A05D800607241 /* E_MagnifiterView.m in Sources */,
+				D2BA5EF41AA1A6B7008FA43F /* MJRefreshBaseView.m in Sources */,
 				D22DE51E1A4C14A500E75F4E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

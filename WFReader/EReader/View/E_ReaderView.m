@@ -27,6 +27,7 @@
     UILongPressGestureRecognizer *longRecognizer;
     
     NSMutableArray *highLightRangeArray;//高亮区域 注：翻页后高亮便不存在，若需让其存在，请本地化该数组
+    NSMutableString *_totalString;
    
 }
 
@@ -78,12 +79,48 @@
     CGAffineTransform transform = CGAffineTransformMake(1,0,0,-1,0,self.bounds.size.height);
     CGContextConcatCTM(context, transform);
     
+    if (_keyWord == nil || [_keyWord isEqualToString:@""]) {
+        
+    }else{
+       
+        [self showSearchResultRect:[self calculateRangeArrayWithKeyWord:_keyWord]];
+    }
+    
+    
     [self showHighLightRect:highLightRangeArray];
     [self showSelectRect:selectedRange];
     [self showCursor];
     
     CTFrameDraw(_ctFrame, context);
 }
+
+
+- (NSMutableArray *)calculateRangeArrayWithKeyWord:(NSString *)searchWord{
+    
+    NSMutableString *blankWord = [NSMutableString string];
+    for (int i = 0; i < searchWord.length; i ++) {
+        
+        [blankWord appendString:@" "];
+    }
+    NSMutableArray *feedBackArray = [NSMutableArray array];
+    
+    for (int i = 0; i < INT_MAX; i++){
+        if ([_totalString rangeOfString:searchWord options:1].location != NSNotFound){
+            
+            NSRange newRange = [_totalString rangeOfString:searchWord options:1];
+            
+            [feedBackArray addObject:NSStringFromRange(newRange)];
+            [_totalString replaceCharactersInRange:newRange withString:blankWord];
+        
+        }else{
+            break;
+        }
+    
+    }
+    return feedBackArray;
+
+}
+
 
 - (NSDictionary *)coreTextAttributes
 {
@@ -100,6 +137,8 @@
 - (void)render
 {
     NSMutableAttributedString *attrString = [[NSMutableAttributedString  alloc] initWithString:self.text];
+    _totalString = [NSMutableString stringWithString:self.text];
+    
     [attrString setAttributes:self.coreTextAttributes range:NSMakeRange(0, attrString.length)];
     CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef) attrString);
     CGPathRef path = CGPathCreateWithRect(self.bounds, NULL);
@@ -107,6 +146,8 @@
         CFRelease(_ctFrame), _ctFrame = NULL;
     }
     _ctFrame = CTFramesetterCreateFrame(frameSetter, CFRangeMake(0, 0), path, NULL);
+    
+    
     
 //计算高度的方法****************************
 //    suggestedSize = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRangeMake(0, 0), NULL, CGSizeMake(CGRectGetWidth(self.frame), MAXFLOAT), NULL);
@@ -122,6 +163,14 @@
 - (CTFrameRef)getCTFrame
 {
     return _ctFrame;
+}
+
+#pragma mark - 搜索结果
+- (void)showSearchResultRect:(NSMutableArray *)resultArray{
+    
+    for (int i = 0; i < resultArray.count; i ++) {
+        [self drawHighLightRect:NSRangeFromString([resultArray objectAtIndex:i])];
+    }
 }
 
 #pragma mark -高亮区域
