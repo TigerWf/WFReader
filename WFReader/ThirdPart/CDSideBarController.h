@@ -29,7 +29,7 @@
 
 @property (nonatomic, retain) UIColor *menuColor;
 @property (nonatomic) BOOL isOpen;
-
+@property (nonatomic, retain) UITapGestureRecognizer *singleTap;
 @property (nonatomic, retain) id<CDSideBarControllerDelegate> delegate;
 
 - (CDSideBarController*)initWithImages:(NSArray*)buttonList;

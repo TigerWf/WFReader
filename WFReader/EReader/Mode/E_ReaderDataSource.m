@@ -11,8 +11,8 @@
 
 @implementation E_ReaderDataSource
 
-+ (E_ReaderDataSource *)shareInstance
-{
++ (E_ReaderDataSource *)shareInstance{
+    
     static E_ReaderDataSource *dataSource;
     static dispatch_once_t onceToken;
     
@@ -39,8 +39,7 @@
     return chapter;
 }
 
-- (E_EveryChapter *)openChapter
-{
+- (E_EveryChapter *)openChapter{
     NSUInteger index = [E_CommonManager Manager_getChapterBefore];
     
     _currentChapterIndex = index;
@@ -62,8 +61,7 @@
 }
 
 
-- (E_EveryChapter *)nextChapter
-{
+- (E_EveryChapter *)nextChapter{
 
     if (_currentChapterIndex >= _totalChapter) {
         
@@ -81,8 +79,8 @@
 
 }
 
-- (E_EveryChapter *)preChapter
-{
+- (E_EveryChapter *)preChapter{
+    
     if (_currentChapterIndex <= 1) {
         
         return nil;
@@ -98,8 +96,14 @@
 }
 
 
-static NSString *readTextData(NSUInteger index)
-{
+- (NSMutableArray *)searchWithKeyWords:(NSString *)keyWord{
+    
+    return nil;
+
+}
+
+static NSString *readTextData(NSUInteger index){
+    
     NSString *chapter_num = [NSString stringWithFormat:@"Chapter%ld",index];
     NSString *path1 = [[NSBundle mainBundle] pathForResource:chapter_num ofType:@"txt"];
     NSString *content = [NSString stringWithContentsOfFile:path1 encoding:4 error:NULL];

@@ -65,4 +65,13 @@
  */
 - (E_EveryChapter *)preChapter;
 
+/**
+ *  全文搜索
+ *
+ *  @param keyWord 要搜索的关键字
+ *
+ *  @return 搜索的关键字所在的位置
+ */
+- (NSMutableArray *)searchWithKeyWords:(NSString *)keyWord;
+
 @end

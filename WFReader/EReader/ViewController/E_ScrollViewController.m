@@ -75,6 +75,7 @@
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
     
+    
     //设置总章节数
     [E_ReaderDataSource shareInstance].totalChapter = 7;
     self.fontSize = [E_CommonManager fontSize];
@@ -383,7 +384,9 @@
 - (void)doShare{
     
     tapGesRec.enabled = NO;
-    for (int i ; i < _pageViewController.gestureRecognizers.count; i ++) {
+    sideBar.singleTap.enabled = YES;
+    
+    for (int i = 0; i < _pageViewController.gestureRecognizers.count; i ++) {
         UIGestureRecognizer *ges = (UIGestureRecognizer *)[_pageViewController.gestureRecognizers objectAtIndex:i];
         ges.enabled = NO;
     }
@@ -395,7 +398,7 @@
 - (void)changeGestureRecognizers{
     
     tapGesRec.enabled = YES;
-    for (int i ; i < _pageViewController.gestureRecognizers.count; i ++) {
+    for (int i = 0 ; i < _pageViewController.gestureRecognizers.count; i ++) {
         UIGestureRecognizer *ges = (UIGestureRecognizer *)[_pageViewController.gestureRecognizers objectAtIndex:i];
         ges.enabled = YES;
     }
@@ -418,7 +421,7 @@
     
     [self callToolBar];
     tapGesRec.enabled = NO;
-    
+    sideBar.singleTap.enabled = NO;
     DELAYEXECUTE(0.18, {E_DrawerView *drawerView = [[E_DrawerView alloc] initWithFrame:self.view.frame parentView:self.view];drawerView.delegate = self;
         [self.view addSubview:drawerView];});
     
