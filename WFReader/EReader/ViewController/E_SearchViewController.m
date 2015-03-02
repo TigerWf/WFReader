@@ -32,11 +32,13 @@
     NSInteger themeID = [E_CommonManager Manager_getReadTheme];
     if (themeID == 1) {
         _themeImage = nil;
+        self.view.backgroundColor = [UIColor whiteColor];
     }else{
         _themeImage = [UIImage imageNamed:[NSString stringWithFormat:@"reader_bg%ld.png",(long)themeID]];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:_themeImage];
     }
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:_themeImage];
+    
     _dataSource = [[NSMutableArray alloc] initWithCapacity:0];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
@@ -93,7 +95,7 @@
    
     [[_dataSource objectAtIndex:0] addObjectsFromArray:[tempArray objectAtIndex:0]];
     [[_dataSource objectAtIndex:1] addObjectsFromArray:[tempArray objectAtIndex:1]];
-    
+    [[_dataSource objectAtIndex:2] addObjectsFromArray:[tempArray objectAtIndex:2]];
     [_searchResultView reloadData];
   
 }
