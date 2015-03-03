@@ -7,8 +7,7 @@
 //
 
 #import "E_SearchTableViewCell.h"
-
-#define kScreenW [UIScreen mainScreen].bounds.size.width
+#import "E_ContantFile.h"
 
 @implementation E_SearchTableViewCell
 

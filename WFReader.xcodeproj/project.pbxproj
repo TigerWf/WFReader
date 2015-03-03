@@ -29,6 +29,8 @@
 		D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5551A4C14C300E75F4E /* E_ReaderView.m */; };
 		D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */; };
 		D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */; };
+		D252B48B1AA459110060B8C5 /* E_Mark.m in Sources */ = {isa = PBXBuildFile; fileRef = D252B48A1AA459110060B8C5 /* E_Mark.m */; };
+		D252B48E1AA46C4E0060B8C5 /* E_MarkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D252B48D1AA46C4E0060B8C5 /* E_MarkTableViewCell.m */; };
 		D2720FBF1A8DDC8300D18B23 /* E_SettingTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */; };
 		D2720FC21A8DE13400D18B23 /* E_SettingBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D2720FC11A8DE13400D18B23 /* E_SettingBottomBar.m */; };
 		D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */ = {isa = PBXBuildFile; fileRef = D27768EE1A79F2F200607241 /* E_CursorView.m */; };
@@ -59,6 +61,10 @@
 		D2BBD7CD1AA04DD900029980 /* reader_bg3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BBD7C71AA04DD900029980 /* reader_bg3@2x.png */; };
 		D2BBD7CE1AA04DD900029980 /* reader_bg4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BBD7C81AA04DD900029980 /* reader_bg4@2x.png */; };
 		D2BBD7CF1AA04DD900029980 /* reader_bg5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BBD7C91AA04DD900029980 /* reader_bg5@2x.png */; };
+		D2C1EB011AA5572200967762 /* NSDate+NSDate_E_Date.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C1EB001AA5572200967762 /* NSDate+NSDate_E_Date.m */; };
+		D2C1EB071AA59CF200967762 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C1EB041AA59CF200967762 /* NJKWebViewProgress.m */; };
+		D2C1EB081AA59CF200967762 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C1EB061AA59CF200967762 /* NJKWebViewProgressView.m */; };
+		D2C1EB0B1AA59D9400967762 /* E_WebViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C1EB0A1AA59D9400967762 /* E_WebViewControler.m */; };
 		D2C4FEFA1AA0639600DD14CE /* r_ribbonRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C4FEF71AA0639600DD14CE /* r_ribbonRed@2x.png */; };
 		D2C4FF041AA0674000DD14CE /* menuClose.png in Resources */ = {isa = PBXBuildFile; fileRef = D2C4FEFF1AA0674000DD14CE /* menuClose.png */; };
 		D2C4FF0A1AA067DA00DD14CE /* CDSideBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2C4FF091AA067DA00DD14CE /* CDSideBarController.m */; };
@@ -115,6 +121,10 @@
 		D22DE5581A4C14C300E75F4E /* E_ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ReaderViewController.m; sourceTree = "<group>"; };
 		D22DE5591A4C14C300E75F4E /* E_ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_ScrollViewController.h; sourceTree = "<group>"; };
 		D22DE55A1A4C14C300E75F4E /* E_ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_ScrollViewController.m; sourceTree = "<group>"; };
+		D252B4891AA459110060B8C5 /* E_Mark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_Mark.h; sourceTree = "<group>"; };
+		D252B48A1AA459110060B8C5 /* E_Mark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_Mark.m; sourceTree = "<group>"; };
+		D252B48C1AA46C4E0060B8C5 /* E_MarkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_MarkTableViewCell.h; sourceTree = "<group>"; };
+		D252B48D1AA46C4E0060B8C5 /* E_MarkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_MarkTableViewCell.m; sourceTree = "<group>"; };
 		D2720FBD1A8DDC8300D18B23 /* E_SettingTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SettingTopBar.h; sourceTree = "<group>"; };
 		D2720FBE1A8DDC8300D18B23 /* E_SettingTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_SettingTopBar.m; sourceTree = "<group>"; };
 		D2720FC01A8DE13400D18B23 /* E_SettingBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_SettingBottomBar.h; sourceTree = "<group>"; };
@@ -163,6 +173,14 @@
 		D2BBD7C71AA04DD900029980 /* reader_bg3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_bg3@2x.png"; sourceTree = "<group>"; };
 		D2BBD7C81AA04DD900029980 /* reader_bg4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_bg4@2x.png"; sourceTree = "<group>"; };
 		D2BBD7C91AA04DD900029980 /* reader_bg5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reader_bg5@2x.png"; sourceTree = "<group>"; };
+		D2C1EAFF1AA5572200967762 /* NSDate+NSDate_E_Date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+NSDate_E_Date.h"; sourceTree = "<group>"; };
+		D2C1EB001AA5572200967762 /* NSDate+NSDate_E_Date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+NSDate_E_Date.m"; sourceTree = "<group>"; };
+		D2C1EB031AA59CF200967762 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgress.h; sourceTree = "<group>"; };
+		D2C1EB041AA59CF200967762 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgress.m; sourceTree = "<group>"; };
+		D2C1EB051AA59CF200967762 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		D2C1EB061AA59CF200967762 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		D2C1EB091AA59D9400967762 /* E_WebViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = E_WebViewControler.h; sourceTree = "<group>"; };
+		D2C1EB0A1AA59D9400967762 /* E_WebViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = E_WebViewControler.m; sourceTree = "<group>"; };
 		D2C4FEF71AA0639600DD14CE /* r_ribbonRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "r_ribbonRed@2x.png"; sourceTree = "<group>"; };
 		D2C4FEFF1AA0674000DD14CE /* menuClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menuClose.png; sourceTree = "<group>"; };
 		D2C4FF081AA067DA00DD14CE /* CDSideBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSideBarController.h; sourceTree = "<group>"; };
@@ -276,6 +294,10 @@
 				D22DE5491A4C14C300E75F4E /* E_ReaderDataSource.h */,
 				D22DE54A1A4C14C300E75F4E /* E_ReaderDataSource.m */,
 				D206F34C1A4C164300A50C29 /* E_ContantFile.h */,
+				D252B4891AA459110060B8C5 /* E_Mark.h */,
+				D252B48A1AA459110060B8C5 /* E_Mark.m */,
+				D2C1EAFF1AA5572200967762 /* NSDate+NSDate_E_Date.h */,
+				D2C1EB001AA5572200967762 /* NSDate+NSDate_E_Date.m */,
 			);
 			path = Mode;
 			sourceTree = "<group>";
@@ -333,6 +355,8 @@
 				D2949EE01A90446800C8870C /* E_ListView.m */,
 				D2BA5EDF1AA19AFB008FA43F /* E_SearchTableViewCell.h */,
 				D2BA5EE01AA19AFB008FA43F /* E_SearchTableViewCell.m */,
+				D252B48C1AA46C4E0060B8C5 /* E_MarkTableViewCell.h */,
+				D252B48D1AA46C4E0060B8C5 /* E_MarkTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +372,8 @@
 				D2BA5EDB1AA16D44008FA43F /* E_SearchViewController.m */,
 				D2C4FF111AA06F8400DD14CE /* E_CommentViewController.h */,
 				D2C4FF121AA06F8400DD14CE /* E_CommentViewController.m */,
+				D2C1EB091AA59D9400967762 /* E_WebViewControler.h */,
+				D2C1EB0A1AA59D9400967762 /* E_WebViewControler.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -355,6 +381,7 @@
 		D2720FB41A8DD00800D18B23 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				D2C1EB021AA59CF200967762 /* NJKWebViewProgress */,
 				D2BA5EE21AA1A6B7008FA43F /* MJRefresh */,
 				D2C4FF081AA067DA00DD14CE /* CDSideBarController.h */,
 				D2C4FF091AA067DA00DD14CE /* CDSideBarController.m */,
@@ -385,6 +412,17 @@
 				D2BA5EF21AA1A6B7008FA43F /* UIView+Extension.m */,
 			);
 			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		D2C1EB021AA59CF200967762 /* NJKWebViewProgress */ = {
+			isa = PBXGroup;
+			children = (
+				D2C1EB031AA59CF200967762 /* NJKWebViewProgress.h */,
+				D2C1EB041AA59CF200967762 /* NJKWebViewProgress.m */,
+				D2C1EB051AA59CF200967762 /* NJKWebViewProgressView.h */,
+				D2C1EB061AA59CF200967762 /* NJKWebViewProgressView.m */,
+			);
+			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,20 +555,25 @@
 				D2C4FF0A1AA067DA00DD14CE /* CDSideBarController.m in Sources */,
 				D2BA5EF71AA1A6B7008FA43F /* MJRefreshHeaderView.m in Sources */,
 				D2949EE41A909A0600C8870C /* ILSlider.m in Sources */,
+				D2C1EB071AA59CF200967762 /* NJKWebViewProgress.m in Sources */,
 				D2BA5EDC1AA16D44008FA43F /* E_SearchViewController.m in Sources */,
 				D27768EF1A79F2F200607241 /* E_CursorView.m in Sources */,
+				D252B48B1AA459110060B8C5 /* E_Mark.m in Sources */,
 				D2949EDB1A90351A00C8870C /* UIImage+ImageEffects.m in Sources */,
+				D252B48E1AA46C4E0060B8C5 /* E_MarkTableViewCell.m in Sources */,
 				D2BA5EF91AA1A6B7008FA43F /* UIScrollView+MJRefresh.m in Sources */,
 				D22DE55B1A4C14C300E75F4E /* E_CommonManager.m in Sources */,
 				D22DE5671A4C14C300E75F4E /* E_ReaderViewController.m in Sources */,
 				D22DE55D1A4C14C300E75F4E /* E_Paging.mm in Sources */,
 				D22DE5241A4C14A500E75F4E /* ViewController.m in Sources */,
+				D2C1EB081AA59CF200967762 /* NJKWebViewProgressView.m in Sources */,
 				D22DE5661A4C14C300E75F4E /* E_ReaderView.m in Sources */,
 				D2BA5EF81AA1A6B7008FA43F /* UIScrollView+Extension.m in Sources */,
 				D2BA5EF61AA1A6B7008FA43F /* MJRefreshFooterView.m in Sources */,
 				D2949ED61A9031A500C8870C /* E_DrawerView.m in Sources */,
 				D22DE55C1A4C14C300E75F4E /* E_EveryChapter.m in Sources */,
 				D2BA5EFA1AA1A6B7008FA43F /* UIView+Extension.m in Sources */,
+				D2C1EB0B1AA59D9400967762 /* E_WebViewControler.m in Sources */,
 				D22DE55E1A4C14C300E75F4E /* E_ReaderDataSource.m in Sources */,
 				D2BA5EE11AA19AFB008FA43F /* E_SearchTableViewCell.m in Sources */,
 				D22DE5681A4C14C300E75F4E /* E_ScrollViewController.m in Sources */,
@@ -538,6 +581,7 @@
 				D2949EE11A90446800C8870C /* E_ListView.m in Sources */,
 				D2720FBF1A8DDC8300D18B23 /* E_SettingTopBar.m in Sources */,
 				D2C4FF131AA06F8400DD14CE /* E_CommentViewController.m in Sources */,
+				D2C1EB011AA5572200967762 /* NSDate+NSDate_E_Date.m in Sources */,
 				D22DE5211A4C14A500E75F4E /* AppDelegate.m in Sources */,
 				D27768F21A7A05D800607241 /* E_MagnifiterView.m in Sources */,
 				D2BA5EF41AA1A6B7008FA43F /* MJRefreshBaseView.m in Sources */,
@@ -664,7 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WFReader/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -675,7 +719,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WFReader/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

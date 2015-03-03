@@ -15,6 +15,7 @@
 
 - (void)shutOffPageViewControllerGesture:(BOOL)yesOrNo;
 - (void)hideTheSettingBar;
+- (void)ciBaWithString:(NSString *)ciBaString;
 
 @end
 

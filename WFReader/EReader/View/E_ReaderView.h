@@ -19,6 +19,7 @@
 
 - (void)shutOffGesture:(BOOL)yesOrNo;
 - (void)hideSettingToolBar;
+- (void)ciBa:(NSString *)ciBasString;
 
 @end
 

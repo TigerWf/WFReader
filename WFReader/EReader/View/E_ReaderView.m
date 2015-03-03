@@ -10,11 +10,14 @@
 #import <CoreText/CoreText.h>
 #import "E_ContantFile.h"
 #import "E_CommonManager.h"
+#import <AVFoundation/AVSpeechSynthesis.h>
 
 
 #define kEpubView_H self.frame.size.height
 #define kItemCopy           @"复制"
-#define kItemHighLight      @"高亮"
+//#define kItemHighLight      @"高亮"
+#define kItemCiBa           @"词霸"
+#define kItemRead           @"朗读"
 
 @implementation E_ReaderView
 {
@@ -87,7 +90,7 @@
     }
     
     
-    [self showHighLightRect:highLightRangeArray];
+   // [self showHighLightRect:highLightRangeArray];
     [self showSelectRect:selectedRange];
     [self showCursor];
     
@@ -466,14 +469,16 @@
                                     initWithTitle:kItemCopy
                                     action:@selector(copyword:)];
         
-        UIMenuItem *menuItemHighLight = [[UIMenuItem alloc]
-                                          initWithTitle:kItemHighLight
-                                          action:@selector(highLight:)];
-        
-        
+//        UIMenuItem *menuItemHighLight = [[UIMenuItem alloc]
+//                                          initWithTitle:kItemHighLight
+//                                          action:@selector(highLight:)];
+        UIMenuItem *menuItemCiBa = [[UIMenuItem alloc] initWithTitle:kItemCiBa action:@selector(ciBa:)];
+        UIMenuItem *menuItmeRead = [[UIMenuItem alloc] initWithTitle:kItemRead action:@selector(readText:)];
         NSArray *mArray = [NSArray arrayWithObjects:
                            menuItemCopy,
-                           menuItemHighLight,
+                         //  menuItemHighLight,
+                           menuItemCiBa,
+                           menuItmeRead,
                            nil];
         [menuController setMenuItems:mArray];
         
@@ -521,19 +526,34 @@
 }
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-   
-    if (action == @selector(copyword:) || action == @selector(highLight:)) {
+   //|| action == @selector(highLight:)
+    if (action == @selector(copyword:) || action == @selector(ciBa:) || action == @selector(readText:)) {
         return YES;
     }
     return NO;
 }
 
-//高亮
-#pragma mark - 高亮
-- (void)highLight:(id)sender{
+////高亮
+//#pragma mark - 高亮
+//- (void)highLight:(id)sender{
+//    
+//     [_delegate shutOffGesture:NO];
+//    [highLightRangeArray addObject:NSStringFromRange(selectedRange)];
+//    selectedRange.location = 0;
+//    selectedRange.length = 0;
+//    [self removeCursor];
+//    [self hideMenuUI];
+//    [self setNeedsDisplay];
+//    
+//    panRecognizer.enabled = NO;
+//    tapRecognizer.enabled = NO;
+//    longRecognizer.enabled = YES;
+//    
+//}
+
+
+- (void)resetting{
     
-     [_delegate shutOffGesture:NO];
-    [highLightRangeArray addObject:NSStringFromRange(selectedRange)];
     selectedRange.location = 0;
     selectedRange.length = 0;
     [self removeCursor];
@@ -543,30 +563,47 @@
     panRecognizer.enabled = NO;
     tapRecognizer.enabled = NO;
     longRecognizer.enabled = YES;
-    
+
 }
+
+//朗读
+- (void)readText:(id)sender{
+    
+    [_delegate shutOffGesture:NO];
+    
+    NSString *readText = [NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]];
+    
+    AVSpeechSynthesizer *av = [[AVSpeechSynthesizer alloc]init];
+    AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc]initWithString:readText];  //需要转换的文本
+    utterance.rate = 0.2;
+    utterance.pitchMultiplier = 0.5;
+    [av speakUtterance:utterance];
+    [self resetting];
+}
+
+
+//词霸
+- (void)ciBa:(id)sender{
+    
+    [_delegate shutOffGesture:NO];
+    NSString *ciBaString = [NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]];
+    [_delegate ciBa:ciBaString];
+    [self resetting];
+}
+
 
 //拷贝
 #pragma mark - copy
 - (void)copyword:(id)sender{
     
     [_delegate shutOffGesture:NO];
-   UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-   [pasteboard setString:[NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]]];
-    [self hideMenuUI];
-    NSLog(@"copyString == %@",[NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]]);
-    selectedRange.location = 0;
-    selectedRange.length = 0;
-    [self removeCursor];
-    [self hideMenuUI];
-    [self setNeedsDisplay];
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    [pasteboard setString:[NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]]];
     
-    panRecognizer.enabled = NO;
-    tapRecognizer.enabled = NO;
-    longRecognizer.enabled = YES;
-    
-    
+     NSLog(@"copyString == %@",[NSString stringWithFormat:@"%@",[self.text substringWithRange:NSMakeRange(selectedRange.location, selectedRange.length)]]);
+    [self resetting];
 }
+
 
 - (BOOL)canBecomeFirstResponder {
     return YES;
@@ -643,6 +680,7 @@
         }
     
     }
+    free(origins);
     return index;
 
 }

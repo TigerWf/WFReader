@@ -48,6 +48,11 @@
     [_delegate shutOffPageViewControllerGesture:yesOrNo];
 }
 
+- (void)ciBa:(NSString *)ciBaString{
+
+    [_delegate ciBaWithString:ciBaString];
+}
+
 - (void)hideSettingToolBar{
     [_delegate hideTheSettingBar];
 }

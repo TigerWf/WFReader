@@ -67,6 +67,7 @@
     CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 230/255.0, 230/255.0, 230/255.0, 1 });
     [textFieldBg.layer setBorderColor:colorref];
     [self.view addSubview:textFieldBg];
+    CGColorSpaceRelease(colorSpace);
 
     UIImageView *fangdajingBg = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 13, 13)];
     fangdajingBg.image = [UIImage imageNamed:@"magnifiter.png"];

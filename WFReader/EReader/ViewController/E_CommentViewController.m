@@ -23,7 +23,7 @@
     titleLbl.font = [UIFont systemFontOfSize:20];
     titleLbl.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:titleLbl];
-;
+
     
     UIButton *backBtn = [UIButton buttonWithType:0];
     backBtn.frame = CGRectMake(10, 20, 60, 44);

@@ -99,6 +99,20 @@
     
 }
 
+- (void)clickMark:(E_Mark *)eMark{
+   
+    [UIView animateWithDuration:0.25 animations:^{
+        _listView.frame = CGRectMake(-ListViewW, 0, ListViewW, self.frame.size.height);
+        self.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [_listView removeFromSuperview];
+        _listView = nil;
+        [_delegate openTapGes];
+        [_delegate turnToClickMark:eMark];
+        [self removeFromSuperview];
+    }];
+
+}
 
 - (void)clickChapter:(NSInteger)chaperIndex{
     

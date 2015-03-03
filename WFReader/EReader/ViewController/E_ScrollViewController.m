@@ -19,7 +19,7 @@
 #import "CDSideBarController.h"
 #import "E_CommentViewController.h"
 #import "E_SearchViewController.h"
-
+#import "E_WebViewControler.h"
 
 @interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate,E_SearchViewControllerDelegate>
 {
@@ -68,8 +68,7 @@
     
    [super viewDidAppear:animated];
     
-   [sideBar insertMenuButtonOnView:[UIApplication sharedApplication].delegate.window atPosition:CGPointMake(self.view.frame.size.width - 70, 50)];
-    sideBar.singleTap.enabled = YES;
+   
 }
 
 - (void)viewDidLoad
@@ -79,7 +78,8 @@
     NSArray *imageList = @[[UIImage imageNamed:@"sina.png"], [UIImage imageNamed:@"friend.png"], [UIImage imageNamed:@"weixin.png"], [UIImage imageNamed:@"menuClose.png"]];
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
-    
+    [sideBar insertMenuButtonOnView:[UIApplication sharedApplication].delegate.window atPosition:CGPointMake(self.view.frame.size.width - 70, 50)];
+    sideBar.singleTap.enabled = YES;
 
     //设置总章节数
     [E_ReaderDataSource shareInstance].totalChapter = 7;
@@ -222,6 +222,7 @@
 
 #pragma mark - readerVcDelegate
 - (void)shutOffPageViewControllerGesture:(BOOL)yesOrNo{
+    
     if (yesOrNo == NO) {
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
@@ -230,6 +231,13 @@
         _pageViewController.dataSource = nil;
     
     }
+}
+
+- (void)ciBaWithString:(NSString *)ciBaString{
+   
+    E_WebViewControler *webView = [[E_WebViewControler alloc] initWithSelectString:ciBaString];
+    [self presentViewController:webView animated:YES completion:NULL];
+
 }
 
 #pragma mark - 点击侧边栏目录跳转
@@ -244,6 +252,31 @@
 - (void)sliderToChapterPage:(NSInteger)chapterIndex{
     //NSLog(@"update");
     [self showPage:chapterIndex - 1];
+}
+
+#pragma mark - 点击侧边栏书签跳转
+- (void)turnToClickMark:(E_Mark *)eMark{
+    
+    E_EveryChapter *e_chapter = [[E_ReaderDataSource shareInstance] openChapter:[eMark.markChapter integerValue]];
+    [self parseChapter:e_chapter];
+    
+    if (_pageViewController) {
+        
+         NSLog(@"remove pageViewController");
+        [_pageViewController.view removeFromSuperview];
+        [_pageViewController removeFromParentViewController];
+        _pageViewController = nil;
+    }
+    _pageViewController = [[UIPageViewController alloc] init];
+    _pageViewController.delegate = self;
+    _pageViewController.dataSource = self;
+    
+    
+    [self addChildViewController:_pageViewController];
+    [self.view addSubview:_pageViewController.view];
+    
+    int showPage = [self findOffsetInNewPage:NSRangeFromString(eMark.markRange).location];
+    [self showPage:showPage];
 }
 
 #pragma mark - 上一章
@@ -349,9 +382,10 @@
 - (void)showMultifunctionButton{
     
     if (_searchBtn) {
-        DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.15, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.15, [_searchBtn removeFromSuperview];_searchBtn = nil;);});});
+        DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.12, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.09, [_searchBtn removeFromSuperview];_searchBtn = nil;);});});
         return;
     }
+   
     
     _searchBtn = [UIButton buttonWithType:0];
     _searchBtn.frame = CGRectMake(self.view.frame.size.width - 70, 20 + 44 + 16, 44, 44);
@@ -367,7 +401,25 @@
     _markBtn.backgroundColor = [UIColor colorWithRed:59/255.0 green:59/255.0 blue:59/255.0 alpha:1.0];
     _markBtn.frame = CGRectMake(self.view.frame.size.width - 70 , 20 + 44 + 16 + 44 + 16, 44, 44);
     _markBtn.layer.cornerRadius = 22;
+    
+    NSRange range = [_paginater rangeOfPage:_readPage];
+    NSRange newRange = NSMakeRange(range.location, 20);//只取20个字
+    if ([E_CommonManager checkIfHasBookmark:newRange withChapter:[E_ReaderDataSource shareInstance].currentChapterIndex]) {
+        _markBtn.selected = YES;
+    }else{
+        _markBtn.selected = NO;
+    }
+    
+    if (_markBtn.selected == YES) {
+        
+        [_markBtn setTitleColor:[UIColor redColor] forState:0];
+        
+    }else{
+        
+        [_markBtn setTitleColor:[UIColor whiteColor] forState:0];
+    }
     _markBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
+    [_markBtn addTarget:self action:@selector(doMark) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -380,7 +432,7 @@
     _shareBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];
    
     
-    DELAYEXECUTE(0.15,{[self.view addSubview:_searchBtn];DELAYEXECUTE(0.1, {[self.view addSubview:_markBtn];DELAYEXECUTE(0.1, [self.view addSubview:_shareBtn]);});});
+    DELAYEXECUTE(0.15,{[self.view addSubview:_searchBtn];DELAYEXECUTE(0.12, {[self.view addSubview:_markBtn];DELAYEXECUTE(0.09, [self.view addSubview:_shareBtn]);});});
     
 }
 #pragma mark - 多功能按钮群中的搜索按钮触发事件
@@ -403,8 +455,22 @@
         UIGestureRecognizer *ges = (UIGestureRecognizer *)[_pageViewController.gestureRecognizers objectAtIndex:i];
         ges.enabled = NO;
     }
-    DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.15, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.15, [_searchBtn removeFromSuperview];_searchBtn = nil;[self hideTheSettingBar]; [sideBar showMenu];);});});
+    DELAYEXECUTE(0.15,{[_shareBtn removeFromSuperview];_shareBtn = nil;DELAYEXECUTE(0.12, {[_markBtn removeFromSuperview];_markBtn = nil;DELAYEXECUTE(0.09, [_searchBtn removeFromSuperview];_searchBtn = nil;[self hideTheSettingBar]; [sideBar showMenu];);});});
    
+}
+
+- (void)doMark{
+    
+    _markBtn.selected = !_markBtn.selected;
+    if (_markBtn.selected == YES) {
+        [_markBtn setTitleColor:[UIColor redColor] forState:0];
+    }else{
+        [_markBtn setTitleColor:[UIColor whiteColor] forState:0];
+    }
+    
+    NSRange range = [_paginater rangeOfPage:_readPage];
+    NSRange newRange = NSMakeRange(range.location, 20);//只取20个字。
+    [E_CommonManager saveCurrentMark:[E_ReaderDataSource shareInstance].currentChapterIndex andChapterRange:newRange byChapterContent:_paginater.contentText];
 }
 
 #pragma mark - searchViewControllerDelegate -

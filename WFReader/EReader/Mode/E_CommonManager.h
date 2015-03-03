@@ -76,4 +76,29 @@
  */
 + (void)saveFontSize:(NSUInteger)fontSize;
 
+
+/**
+ *  检查当前页是否加了书签
+ *
+ *  @param currentRange 当前range
+ *  @param currentChapter
+ *  @return 是否加了书签
+ */
++ (BOOL)checkIfHasBookmark:(NSRange)currentRange withChapter:(NSInteger)currentChapter;
+
+/**
+ *  保存书签
+ *
+ *  @param currentChapter 当前章节
+ *  @param chapterRange   当前页起始的一段文字的range
+ */
++ (void)saveCurrentMark:(NSInteger)currentChapter andChapterRange:(NSRange)chapterRange byChapterContent:(NSString *)chapterContent;
+
+/**
+ *  获得书签数组
+ *
+ *  @return 书签数组
+ */
++ (NSMutableArray *)Manager_getMark;
+
 @end

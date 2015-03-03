@@ -8,6 +8,7 @@
 
 #import "E_ListView.h"
 #import "E_ReaderDataSource.h"
+#import "E_MarkTableViewCell.h"
 
 
 @implementation E_ListView
@@ -15,8 +16,10 @@
 - (id)initWithFrame:(CGRect)frame{
     
     if (self = [super initWithFrame:frame]) {
+        
         self.userInteractionEnabled = YES;
         self.backgroundColor = [UIColor colorWithRed:240/255.0 green:239/255.0 blue:234/255.0 alpha:1.0];
+        _dataSource = [[NSMutableArray alloc] initWithCapacity:0];
         dataCount = [E_ReaderDataSource shareInstance].totalChapter;
         [self configListView];
         
@@ -83,6 +86,10 @@
 
 - (void)configListView{
     
+    _isMenu = YES;
+    _isMark = NO;
+    _isNote = NO;
+    
     [self configListViewHeader];
    
     _listView = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, self.frame.size.width, self.frame.size.height - 80 - 60)];
@@ -105,7 +112,7 @@
 
 - (void)configListViewHeader{
 
-    NSArray *segmentedArray = @[@"目录",@"书签",@"笔记"];
+    NSArray *segmentedArray = @[@"目录",@"书签"];
     _segmentControl = [[UISegmentedControl alloc] initWithItems:segmentedArray];
     _segmentControl.frame = CGRectMake(15, 30, self.bounds.size.width - 30 , 40);
     _segmentControl.selectedSegmentIndex = 0;
@@ -115,23 +122,36 @@
     NSDictionary *dict = [NSDictionary dictionaryWithObject:[UIFont systemFontOfSize:17] forKey:NSFontAttributeName];
     [_segmentControl setTitleTextAttributes:dict forState:0];
 
-
-
 }
 
 - (void)segmentAction:(UISegmentedControl *)sender{
     
     NSInteger index = sender.selectedSegmentIndex;
     switch (index) {
-        case 0:
-            
+        case 0:{
+                _isMenu = YES;
+                _isMark = NO;
+                _isNote = NO;
+                dataCount = [E_ReaderDataSource shareInstance].totalChapter;
+                [_listView reloadData];
+            }
             break;
-        case 1:
-            
+        case 1:{
+                _isMenu = NO;
+                _isMark = YES;
+                _isNote = NO;
+                _dataSource = [E_CommonManager Manager_getMark];
+                [_listView reloadData];
+            }
             break;
-        case 2:
-            
-            break;
+//        case 2:{
+//                _isMenu = NO;
+//                _isMark = NO;
+//                _isNote = YES;
+//        
+//            }
+//            
+//            break;
             
         default:
             break;
@@ -140,18 +160,30 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+  
+    if (_isMark) {
+        return 100;
+    }
+    
     return 50;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
+    if (_isMark) {
+        return _dataSource.count;
+    }
     return dataCount;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (_isMark) {
+        [_delegate clickMark:[_dataSource objectAtIndex:indexPath.row]];
+        return;
+    }
     
     [_delegate clickChapter:indexPath.row];
 
@@ -159,15 +191,44 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellStr = @"listCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+    
+    if (_isMenu == YES) {
+        static NSString *cellStr = @"menuCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+        }
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.text = [NSString stringWithFormat:@"第%ld章",indexPath.row + 1];
+        return cell;
+
+    }else if(_isMark){
+        
+        static NSString *cellStr = @"markCell";
+        E_MarkTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
+        if (cell == nil) {
+            cell = [[E_MarkTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+        }
+        cell.backgroundColor = [UIColor clearColor];
+        cell.chapterLbl.text = [NSString stringWithFormat:@"第%@章",[(E_Mark *)[_dataSource objectAtIndex:indexPath.row] markChapter]];
+        cell.timeLbl.text    = [(E_Mark *)[_dataSource objectAtIndex:indexPath.row] markTime];
+        cell.contentLbl.text = [(E_Mark *)[_dataSource objectAtIndex:indexPath.row] markContent];
+        return cell;
+    
+    }else{
+        static NSString *cellStr = @"noteCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStr];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellStr];
+        }
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.text = [NSString stringWithFormat:@"第%ld章",indexPath.row + 1];
+        return cell;
+        
     }
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = [NSString stringWithFormat:@"第%ld章",indexPath.row + 1];
-    return cell;
+    return nil;
 }
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
