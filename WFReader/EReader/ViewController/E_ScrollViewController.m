@@ -20,6 +20,7 @@
 #import "E_CommentViewController.h"
 #import "E_SearchViewController.h"
 #import "E_WebViewControler.h"
+#import "E_HUDView.h"
 
 @interface E_ScrollViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate,E_ReaderViewControllerDelegate,E_SettingTopBarDelegate,E_SettingBottomBarDelegate,E_DrawerViewDelegate,CDSideBarControllerDelegate,E_SearchViewControllerDelegate>
 {
@@ -283,6 +284,7 @@
 - (void)turnToPreChapter{
     
     if ([E_ReaderDataSource shareInstance].currentChapterIndex <= 1) {
+        [E_HUDView showMsg:@"已经是第一章" inView:self.view];
         return;
     }
     [self turnToClickChapter:[E_ReaderDataSource shareInstance].currentChapterIndex - 2];
@@ -292,6 +294,7 @@
 - (void)turnToNextChapter{
     
     if ([E_ReaderDataSource shareInstance].currentChapterIndex == [E_ReaderDataSource shareInstance].totalChapter) {
+        [E_HUDView showMsg:@"已经是最后一章" inView:self.view];
         return;
     }
     [self turnToClickChapter:[E_ReaderDataSource shareInstance].currentChapterIndex];
@@ -403,8 +406,7 @@
     _markBtn.layer.cornerRadius = 22;
     
     NSRange range = [_paginater rangeOfPage:_readPage];
-    NSRange newRange = NSMakeRange(range.location, 20);//只取20个字
-    if ([E_CommonManager checkIfHasBookmark:newRange withChapter:[E_ReaderDataSource shareInstance].currentChapterIndex]) {
+    if ([E_CommonManager checkIfHasBookmark:range withChapter:[E_ReaderDataSource shareInstance].currentChapterIndex]) {
         _markBtn.selected = YES;
     }else{
         _markBtn.selected = NO;
@@ -469,8 +471,7 @@
     }
     
     NSRange range = [_paginater rangeOfPage:_readPage];
-    NSRange newRange = NSMakeRange(range.location, 20);//只取20个字。
-    [E_CommonManager saveCurrentMark:[E_ReaderDataSource shareInstance].currentChapterIndex andChapterRange:newRange byChapterContent:_paginater.contentText];
+    [E_CommonManager saveCurrentMark:[E_ReaderDataSource shareInstance].currentChapterIndex andChapterRange:range byChapterContent:_paginater.contentText];
 }
 
 #pragma mark - searchViewControllerDelegate -
@@ -514,11 +515,16 @@
 - (void)menuButtonClicked:(int)index{
     
     if (index == 0) {
-        NSLog(@"分享至新浪");
+        
+        [E_HUDView showMsg:@"分享至新浪" inView:self.view];
+        
     }else if (index == 1){
-        NSLog(@"分享至朋友圈");
+       
+        [E_HUDView showMsg:@"分享至朋友圈" inView:self.view];
+        
     }else if(index == 2){
-        NSLog(@"分享至微信");
+
+        [E_HUDView showMsg:@"分享至微信" inView:self.view];
     }
 
 }

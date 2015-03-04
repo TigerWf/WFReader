@@ -8,6 +8,8 @@
 
 #import "E_ReaderDataSource.h"
 #import "E_CommonManager.h"
+#import "E_HUDView.h"
+
 
 @implementation E_ReaderDataSource
 
@@ -65,7 +67,7 @@
 - (E_EveryChapter *)nextChapter{
 
     if (_currentChapterIndex >= _totalChapter) {
-        
+        [E_HUDView showMsg:@"没有更多内容了" inView:nil];
         return nil;
         
     }else{
@@ -83,7 +85,7 @@
 - (E_EveryChapter *)preChapter{
     
     if (_currentChapterIndex <= 1) {
-        
+        [E_HUDView showMsg:@"已经是第一页了" inView:nil];
         return nil;
         
     }else{

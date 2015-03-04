@@ -10,10 +10,12 @@
 #import "E_ContantFile.h"
 #import "E_CommonManager.h"
 #import "ILSlider.h"
-
+#import "E_HUDView.h"
 
 #define MAX_FONT_SIZE 27
 #define MIN_FONT_SIZE 17
+#define MIN_TIPS @"字体已到最小"
+#define MAX_TIPS @"字体已到最大"
 
 @implementation E_SettingBottomBar
 {
@@ -194,6 +196,7 @@
 {
     NSUInteger fontSize = [E_CommonManager fontSize];
     if (fontSize <= MIN_FONT_SIZE) {
+        [E_HUDView showMsg:MIN_TIPS inView:self];
         return;
     }
     fontSize--;
@@ -207,6 +210,7 @@
 {
     NSUInteger fontSize = [E_CommonManager fontSize];
     if (fontSize >= MAX_FONT_SIZE) {
+        [E_HUDView showMsg:MAX_TIPS inView:self];
         return;
     }
     fontSize++;

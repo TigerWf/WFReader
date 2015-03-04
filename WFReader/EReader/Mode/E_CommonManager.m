@@ -103,38 +103,6 @@
 
 
 #pragma mark- 书签保存
-+(NSString *) FileMarkPath{
-    
-    NSString *filepath = [NSHomeDirectory() stringByAppendingFormat:@"/Documents/%@/mark/markArray.plist",epubBookName];
-    
-    if (![[NSFileManager defaultManager] contentsOfDirectoryAtPath:[FilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/mark",epubBookName]] error:nil]) {
-        
-        [[NSFileManager defaultManager] createDirectoryAtPath:[FilePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/mark",epubBookName]]
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:nil];
-    }
-    return filepath;
-    
-    
-    
-}
-
-+ (NSMutableArray *)getArrayFromPlist:(NSString *)path{
-    
-    
-    NSMutableArray *feedBackArray;
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[NSHomeDirectory() stringByAppendingFormat:@"%@",path]]) {
-        
-        feedBackArray = [[NSMutableArray alloc]initWithContentsOfFile:[NSHomeDirectory() stringByAppendingFormat:@"%@",path]];
-        
-        return feedBackArray ;
-    }
-    else
-    {
-        return nil;
-    }
-}
 
 + (void)saveCurrentMark:(NSInteger)currentChapter andChapterRange:(NSRange)chapterRange byChapterContent:(NSString *)chapterContent{
     
@@ -148,6 +116,8 @@
     eMark.markChapter = [NSString stringWithFormat:@"%d",currentChapter];
     eMark.markContent = [chapterContent substringWithRange:chapterRange];
     eMark.markTime    = locationString;
+    
+    NSLog(@"chapterRange == %@",NSStringFromRange(chapterRange));
     
     if (![self checkIfHasBookmark:chapterRange withChapter:currentChapter]) {//没加书签
        
@@ -175,7 +145,7 @@
             
             E_Mark *e = (E_Mark *)[oldSaveArray objectAtIndex:i];
            
-            if ([e.markRange isEqualToString:NSStringFromRange(chapterRange)] && [e.markChapter isEqualToString:[NSString stringWithFormat:@"%d",currentChapter]]) {
+            if (((NSRangeFromString(e.markRange).location >= chapterRange.location) && (NSRangeFromString(e.markRange).location < chapterRange.location + chapterRange.length)) && ([e.markChapter isEqualToString:[NSString stringWithFormat:@"%d",currentChapter]])) {
         
                 [oldSaveArray removeObject:e];
                 [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:oldSaveArray] forKey:epubBookName];
@@ -193,7 +163,8 @@
         int k = 0;
         for (int i = 0; i < oldSaveArray.count; i ++) {
              E_Mark *e = (E_Mark *)[oldSaveArray objectAtIndex:i];
-            if ([e.markRange isEqualToString:NSStringFromRange(currentRange)] && [e.markChapter isEqualToString:[NSString stringWithFormat:@"%d",currentChapter]]) {
+            
+            if ((NSRangeFromString(e.markRange).location >= currentRange.location) && (NSRangeFromString(e.markRange).location < currentRange.location + currentRange.length) && [e.markChapter isEqualToString:[NSString stringWithFormat:@"%d",currentChapter]]) {
                 k++;
             }else{
                // k++;
