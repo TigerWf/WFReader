@@ -80,7 +80,7 @@
     sideBar = [[CDSideBarController alloc] initWithImages:imageList];
     sideBar.delegate = self;
     [sideBar insertMenuButtonOnView:[UIApplication sharedApplication].delegate.window atPosition:CGPointMake(self.view.frame.size.width - 70, 50)];
-    sideBar.singleTap.enabled = YES;
+    sideBar.singleTap.enabled = NO;
 
     //设置总章节数
     [E_ReaderDataSource shareInstance].totalChapter = 7;
